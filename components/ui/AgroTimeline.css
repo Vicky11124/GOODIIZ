@@ -1,0 +1,75 @@
+/* Agro Interactive Animated Timeline Styles */
+@keyframes timelineGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(230, 161, 59, 0.45), 0 0 30px rgba(200, 142, 62, 0.2);
+    transform: scale(1.05);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(230, 161, 59, 0.8), 0 0 45px rgba(200, 142, 62, 0.35);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes beamTravel {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0px) scale(0.9);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-6px) scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+.timeline-track {
+  position: relative;
+  background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #10b981 100%);
+  opacity: 0.85;
+}
+
+.timeline-progress-fill {
+  background: linear-gradient(90deg, #10b981 0%, #059669 50%, #10b981 100%);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.7);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-beam {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, #34d399, #10b981, #059669, transparent);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.9), 0 0 6px rgba(52, 211, 153, 0.8);
+  border-radius: 9999px;
+  filter: blur(0.5px);
+  animation: beamTravel 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.timeline-node-active {
+  animation: timelineGlowPulse 2.5s ease-in-out infinite;
+}
+
+.timeline-node-btn:hover .timeline-icon-wrapper {
+  transform: scale(1.08);
+  border-color: #e6a13b;
+  box-shadow: 0 0 20px rgba(230, 161, 59, 0.5);
+}

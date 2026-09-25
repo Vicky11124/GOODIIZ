@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  body {
+    background-color: #FAF6EE;
+    color: #4A3528;
+    line-height: 1.6;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #143D28;
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Hide scrollbar while preserving full scroll functionality */
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+html, body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@keyframes floatLeaf {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(200, 142, 62, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(200, 142, 62, 0.55);
+  }
+}
+
+.animate-float-leaf {
+  animation: floatLeaf 5s ease-in-out infinite;
+}
+
+@keyframes flowMotionLTR {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-flow-motion {
+  background: linear-gradient(
+    90deg,
+    #143D28 0%,
+    #143D28 30%,
+    #C88E3E 50%,
+    #143D28 70%,
+    #143D28 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: flowMotionLTR 5s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 142, 62, 0.2);
+}
+
+.glass-dark {
+  background: rgba(20, 61, 40, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(200, 142, 62, 0.3);
+}
+
+.container-max {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+

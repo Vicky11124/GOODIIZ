@@ -1,0 +1,92 @@
+/* Magic Product Card Styles - Gold Theme */
+.magic-product-card {
+  position: relative;
+  border-radius: 1.5rem; /* 24px - rounded-3xl */
+  background: #ffffff;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 260px;
+  --glow-color: 230, 161, 59; /* Luxury warm gold */
+}
+
+/* Border glow effect */
+.magic-product-card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2.5px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.95)) 0%,
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.5)) 35%,
+    transparent 70%
+  );
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 25;
+}
+
+/* Hover ambient gold aura */
+.magic-product-card:hover {
+  box-shadow:
+    0 12px 35px -5px rgba(200, 142, 62, 0.22),
+    0 0 25px rgba(230, 161, 59, 0.15);
+}
+
+/* Floating gold star particles */
+.magic-gold-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fdf3cf;
+  box-shadow:
+    0 0 8px #e6a13b,
+    0 0 14px rgba(230, 161, 59, 0.8);
+  pointer-events: none;
+  z-index: 30;
+}
+
+.magic-gold-particle::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: rgba(230, 161, 59, 0.35);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Global spotlight for gold sheen */
+.magic-global-spotlight {
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle,
+    rgba(230, 161, 59, 0.12) 0%,
+    rgba(230, 161, 59, 0.06) 20%,
+    rgba(230, 161, 59, 0.02) 40%,
+    transparent 70%
+  );
+  z-index: 100;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: multiply;
+  will-change: transform, opacity;
+}

@@ -1,0 +1,113 @@
+.specular-card {
+  --sc-radius: 24px;
+  --sc-thickness: 2px;
+  --sc-base-color: rgba(16, 185, 129, 0.2);
+  --sc-line-color: #6ee7b7;
+  --sc-highlight-color: #10b981;
+  --sc-accent-color: #059669;
+  --sc-duration: 4.5s;
+  --sc-bg: #ffffff;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--sc-thickness);
+  border-radius: var(--sc-radius);
+  overflow: hidden;
+  background: var(--sc-base-color);
+  box-shadow: 0 4px 20px -2px rgba(20, 61, 40, 0.08), 0 2px 8px -1px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.specular-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -4px rgba(16, 185, 129, 0.28), 0 8px 18px -2px rgba(20, 61, 40, 0.12);
+}
+
+/* Conic Specular Rotating Green Beam (High Visibility) */
+.specular-card__beam {
+  position: absolute;
+  inset: -250%;
+  width: 600%;
+  height: 600%;
+  margin: auto;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    transparent 40deg,
+    var(--sc-accent-color) 60deg,
+    var(--sc-highlight-color) 70deg,
+    var(--sc-line-color) 78deg,
+    #ffffff 82deg,
+    var(--sc-line-color) 86deg,
+    var(--sc-highlight-color) 94deg,
+    transparent 115deg,
+    transparent 220deg,
+    var(--sc-accent-color) 240deg,
+    var(--sc-highlight-color) 250deg,
+    var(--sc-line-color) 258deg,
+    #ffffff 262deg,
+    var(--sc-line-color) 266deg,
+    var(--sc-highlight-color) 274deg,
+    transparent 295deg,
+    transparent 360deg
+  );
+  animation: sc-spin var(--sc-duration) linear infinite;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 10px var(--sc-highlight-color)) drop-shadow(0 0 4px #ffffff);
+  opacity: 1;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.specular-card:hover .specular-card__beam {
+  animation-duration: calc(var(--sc-duration) * 0.7);
+  filter: drop-shadow(0 0 14px var(--sc-highlight-color)) drop-shadow(0 0 6px #6ee7b7);
+}
+
+@keyframes sc-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Inner Container for Card Content */
+.specular-card__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--sc-radius) - var(--sc-thickness));
+  background: var(--sc-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Optional mouse following radial highlight */
+.specular-card__glow-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 2;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(16, 185, 129, 0.1),
+    transparent 65%
+  );
+}
+
+.specular-card:hover .specular-card__glow-overlay {
+  opacity: 1;
+}

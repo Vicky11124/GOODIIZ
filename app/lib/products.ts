@@ -1,0 +1,160 @@
+export interface Product {
+  id: string
+  name: string
+  category: string
+  shortDescription: string
+  fullDescription: string
+  image: string
+  price: string
+  priceRange: string
+  features: string[]
+  variants?: Variant[]
+  inStock?: boolean
+  rating?: number
+  featured?: boolean
+}
+
+export interface Variant {
+  name: string
+  price: string
+}
+
+export const defaultProducts: Product[] = [
+  {
+    id: 'crunchy-cashews-w240',
+    name: 'Crunchy Cashews W240',
+    category: 'Nuts',
+    shortDescription: 'Whole jumbo cashews with buttery crisp texture.',
+    fullDescription: 'Hand-harvested jumbo Cashews (Grade W240) gently roasted to perfection. Naturally rich in iron, zinc, and healthy unsaturated fats.',
+    image: '/images/products/cashews.jpg',
+    price: '₹290 - ₹1,450',
+    priceRange: '100g - 1kg',
+    features: ['Jumbo W240 Grade', 'Rich in Zinc & Iron', 'Zero Trans Fat'],
+    variants: [
+      { name: 'Cashew Regular 100g', price: '₹290' },
+      { name: 'Cashew Jumbo 500g', price: '₹750' },
+    ],
+    inStock: true,
+    rating: 5.0,
+    featured: true
+  },
+  {
+    id: 'almonds',
+    name: 'Premium Almonds',
+    category: 'Nuts',
+    shortDescription: 'Handpicked premium-grade almonds, roasted to perfection.',
+    fullDescription: 'Our premium almonds are carefully selected from the finest orchards and roasted to bring out their natural, delicious flavor. Rich in Vitamin E and antioxidants, these almonds are perfect for daily nutrition and wellness.',
+    image: '/images/products/almonds.jpg',
+    price: '₹231 - ₹5,990',
+    priceRange: '100g - 1kg',
+    features: ['Rich in Vitamin E', 'Antioxidants', 'Heart Healthy', 'Protein Rich'],
+    variants: [
+      { name: 'Almond Regular (100g)', price: '₹231' },
+      { name: 'Almond Salted (250g)', price: '₹341' },
+      { name: 'Almond Premium (500g)', price: '₹652' },
+      { name: 'Almond Jumbo (1kg)', price: '₹1,254' },
+    ],
+    inStock: true,
+    rating: 4.9,
+    featured: true
+  },
+  {
+    id: 'pistachios',
+    name: 'Roasted Pistachios',
+    category: 'Nuts',
+    shortDescription: 'Salted and seed pistachios in regular and premium grades.',
+    fullDescription: 'Perfectly roasted and salted pistachios that offer a delightful crunch and authentic taste. Sourced from premium vineyards and carefully processed to maintain their natural goodness. Packed with protein and healthy fats.',
+    image: '/images/products/pistachios.jpg',
+    price: '₹242 - ₹3,740',
+    priceRange: '100g - 1kg',
+    features: ['Protein Rich', 'Energy Boost', 'Natural Fiber', 'Tasty'],
+    variants: [
+      { name: 'Pista Salted Regular (100g)', price: '₹242' },
+      { name: 'Pista Seed Regular (250g)', price: '₹550' },
+      { name: 'Pista Premium (500g)', price: '₹1,100' },
+      { name: 'Pista Seed Premium (1kg)', price: '₹3,740' },
+    ],
+    inStock: true,
+    rating: 4.8,
+    featured: true
+  },
+  {
+    id: 'ghee',
+    name: 'Srirangam Ghee',
+    category: 'Dairy',
+    shortDescription: 'Pure cow milk ghee made with traditional Bilona method.',
+    fullDescription: 'Our Srirangam Ghee is prepared from premium A2 cow milk using the traditional Bilona method, ensuring authentic purity and rich aroma. No additives, no preservatives - just pure, golden goodness. Perfect for cooking and wellness.',
+    image: '/images/products/ghee.jpg',
+    price: '₹1,200 - ₹8,500',
+    priceRange: '250ml - 1000ml',
+    features: ['A2 Milk', 'Bilona Method', 'Pure Aroma', '100% Natural'],
+    variants: [
+      { name: 'Ghee 250ml', price: '₹1,200' },
+      { name: 'Ghee 500ml', price: '₹2,200' },
+      { name: 'Ghee 1L', price: '₹4,200' },
+    ],
+    inStock: true,
+    rating: 5.0,
+    featured: true
+  },
+  {
+    id: 'raisins',
+    name: 'Natural Raisins',
+    category: 'Dry Fruits',
+    shortDescription: 'Naturally sweet raisins from finest vineyards.',
+    fullDescription: 'Our raisins are sourced from the finest Indian and imported vineyards, dried naturally to retain their sweetness and nutritional value. Rich in iron and natural energy, perfect for your daily wellness.',
+    image: '/images/products/raisins.jpg',
+    price: '₹88 - ₹2,420',
+    priceRange: '100g - 1kg',
+    features: ['Iron Rich', 'Energy Dense', 'Natural Sweetness', 'No Added Sugar'],
+    variants: [
+      { name: 'Indian Raisin (100g)', price: '₹88' },
+      { name: 'Sundakani Raisin (250g)', price: '₹231' },
+      { name: 'Munakka Green (500g)', price: '₹550' },
+      { name: 'Imported Raisin (1kg)', price: '₹2,420' },
+    ],
+    inStock: true,
+    rating: 4.7
+  },
+  {
+    id: 'amla',
+    name: 'Honey Amla',
+    category: 'Dry Fruits',
+    shortDescription: 'Sun-dried and honey preserved amla.',
+    fullDescription: 'Rich in Vitamin C and traditionally used for immunity boost, our amla is sun-dried and preserved in honey to enhance its natural sweetness and nutritional benefits. Perfect for daily health and energy.',
+    image: '/images/products/amla.jpg',
+    price: '₹95 - ₹484',
+    priceRange: '100g - 1kg',
+    features: ['Vitamin C', 'Immunity Booster', 'Natural Energy', 'Traditional Goodness'],
+    variants: [
+      { name: 'Dry Amla (100g)', price: '₹95' },
+      { name: 'Honey Amla (250g)', price: '₹231' },
+      { name: 'Amla Mix (500g)', price: '₹462' },
+    ],
+    inStock: true,
+    rating: 4.6
+  },
+  {
+    id: 'honey',
+    name: 'Pure Natural Honey',
+    category: 'Treats',
+    shortDescription: "Nature's sweetness in every drop.",
+    fullDescription: 'Our pure natural honey is harvested from the finest apiaries, untreated and unfiltered to preserve all the natural enzymes and nutrients. Perfect for sweetening and wellness, with no additives or preservatives.',
+    image: '/images/products/honey.jpg',
+    price: '₹480 - ₹2,400',
+    priceRange: '250g - 1000g',
+    features: ['Enzyme Rich', 'Immune Support', 'Natural Sweetener', 'No Additives'],
+    variants: [
+      { name: 'Honey 250g', price: '₹480' },
+      { name: 'Honey 500g', price: '₹900' },
+      { name: 'Honey 1kg', price: '₹1,800' },
+    ],
+    inStock: true,
+    rating: 4.9
+  },
+]
+
+// Fallback exported products for static usages
+export const products: Product[] = defaultProducts
+
+export const categories = ['All', 'Nuts', 'Dairy', 'Dry Fruits', 'Treats']
