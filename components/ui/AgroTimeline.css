@@ -1,30 +1,18 @@
-/* Agro Interactive Animated Timeline Styles - Image 1 Floating Particles & Double Ring Effect */
-
-@keyframes particleFloat1 {
+/* Agro Interactive Animated Timeline Styles */
+@keyframes timelineGlowPulse {
   0%, 100% {
-    transform: translateY(0px) scale(0.8);
-    opacity: 0.25;
+    box-shadow: 0 0 15px rgba(230, 161, 59, 0.45), 0 0 30px rgba(200, 142, 62, 0.2);
+    transform: scale(1.05);
   }
   50% {
-    transform: translateY(-9px) scale(1.4);
-    opacity: 0.9;
+    box-shadow: 0 0 25px rgba(230, 161, 59, 0.8), 0 0 45px rgba(200, 142, 62, 0.35);
+    transform: scale(1.1);
   }
 }
 
-@keyframes particleFloat2 {
-  0%, 100% {
-    transform: translateY(0px) scale(1.2);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateY(7px) scale(0.7);
-    opacity: 0.3;
-  }
-}
-
-@keyframes timelineBeamTravel {
+@keyframes beamTravel {
   0% {
-    left: -10%;
+    left: 0%;
     opacity: 0;
   }
   15% {
@@ -34,127 +22,41 @@
     opacity: 1;
   }
   100% {
-    left: 110%;
+    left: 100%;
     opacity: 0;
   }
 }
 
-@keyframes nodeRingPulse {
-  0%, 100% {
-    box-shadow: 0 0 16px rgba(16, 185, 129, 0.4), 0 0 32px rgba(229, 169, 60, 0.3), inset 0 0 10px rgba(229, 169, 60, 0.2);
-    border-color: rgba(229, 169, 60, 0.95);
-  }
-  50% {
-    box-shadow: 0 0 28px rgba(16, 185, 129, 0.8), 0 0 48px rgba(229, 169, 60, 0.55), inset 0 0 18px rgba(52, 211, 153, 0.3);
-    border-color: rgba(52, 211, 153, 1);
-  }
-}
-
-@keyframes connectorDotPulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(0.9);
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.9), 0 0 14px rgba(229, 169, 60, 0.9);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.35);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 1), 0 0 22px rgba(52, 211, 153, 1);
-  }
-}
-
-/* Timeline Track Line */
-.timeline-track-container {
-  position: relative;
-  width: 100%;
-}
-
-.timeline-connector-line {
+.timeline-track {
   position: absolute;
-  top: 50%;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: rgba(16, 185, 129, 0.25);
-  transform: translateY(-50%);
-  z-index: 1;
+  left: 12.5%;
+  width: 75%;
+  background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #10b981 100%);
+  opacity: 0.85;
+  border-radius: 9999px;
+  overflow: hidden;
 }
 
-.timeline-connector-progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #10b981 0%, #e5a93c 50%, #34d399 100%);
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.8), 0 0 6px rgba(229, 169, 60, 0.6);
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.timeline-beam-glow {
+.timeline-beam {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 140px;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #34d399, #ffffff, #e5a93c, transparent);
-  box-shadow: 0 0 20px rgba(52, 211, 153, 0.9), 0 0 10px rgba(229, 169, 60, 0.8);
+  width: 90px;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, #34d399, #10b981, #059669, transparent);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.9), 0 0 6px rgba(52, 211, 153, 0.8);
   border-radius: 9999px;
   filter: blur(0.5px);
-  animation: timelineBeamTravel 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: beamTravel 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
 }
 
-/* Floating Spark Particles (Image 1 effect) */
-.timeline-spark {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.spark-1 { animation: particleFloat1 3.2s ease-in-out infinite; }
-.spark-2 { animation: particleFloat2 4.1s ease-in-out infinite; }
-.spark-3 { animation: particleFloat1 4.8s ease-in-out infinite; }
-.spark-4 { animation: particleFloat2 3.6s ease-in-out infinite; }
-
-/* Connector Dot on line */
-.timeline-connector-dot {
-  position: absolute;
-  top: 50%;
-  width: 7px;
-  height: 7px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  z-index: 2;
-  animation: connectorDotPulse 3s ease-in-out infinite;
+.timeline-node-active {
+  animation: timelineGlowPulse 2.5s ease-in-out infinite;
 }
 
-/* Outer Ring concentric glow (Image 1 style) */
-.timeline-node-ring {
-  position: relative;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.timeline-node-ring.active {
-  border: 2px solid #e5a93c;
-  animation: nodeRingPulse 2.8s infinite ease-in-out;
-  background: radial-gradient(circle, rgba(20, 61, 40, 0.9) 0%, rgba(8, 36, 23, 0.95) 100%);
-}
-
-.timeline-node-ring.passed {
-  border: 1.5px solid rgba(229, 169, 60, 0.75);
-  box-shadow: 0 0 14px rgba(229, 169, 60, 0.35);
-  background: rgba(14, 48, 31, 0.85);
-}
-
-.timeline-node-ring.inactive {
-  border: 1.5px solid rgba(16, 185, 129, 0.3);
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.1);
-  background: rgba(10, 36, 23, 0.7);
-}
-
-.timeline-node-ring:hover {
+.timeline-node-btn:hover .timeline-icon-wrapper {
   transform: scale(1.08);
-  border-color: #e5a93c;
-  box-shadow: 0 0 20px rgba(229, 169, 60, 0.6);
+  border-color: #e6a13b;
+  box-shadow: 0 0 20px rgba(230, 161, 59, 0.5);
 }

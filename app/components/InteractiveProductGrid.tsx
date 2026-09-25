@@ -239,7 +239,7 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
                     intensity={2.4}
                     shineSize={30}
                     shineFade={45}
-                    thickness={2.5}
+                    thickness={1.5}
                     speed={0.7}
                     autoAnimate={true}
                     followMouse={true}
