@@ -40,7 +40,7 @@ export const SpecularButton: React.FC<SpecularButtonProps> = ({
   textColor = '#ffffff',
   lineColor = '#fff59d',
   baseColor = '#e6a13b',
-  thickness = 1.5,
+  thickness = 1.2,
   speed = 3.5,
   disabled = false,
   onClick,

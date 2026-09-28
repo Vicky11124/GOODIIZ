@@ -239,12 +239,12 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
                     intensity={2.4}
                     shineSize={30}
                     shineFade={45}
-                    thickness={1.5}
+                    thickness={1.2}
                     speed={0.7}
                     autoAnimate={true}
                     followMouse={true}
                     proximity={350}
-                    className="w-full font-bold text-[10px] sm:text-xs py-2 sm:py-3 shadow-md hover:shadow-xl transition"
+                    className="w-full font-bold text-[10px] sm:text-xs shadow-md hover:shadow-xl transition"
                   >
                     <span className="truncate">Order on WhatsApp</span>
                     <span>→</span>
@@ -341,11 +341,11 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
                   intensity={2.4}
                   shineSize={30}
                   shineFade={45}
-                  thickness={2.5}
+                  thickness={1.2}
                   speed={0.7}
                   autoAnimate={true}
                   followMouse={true}
-                  className="flex-1 font-bold text-xs py-3 shadow-md"
+                  className="flex-1 font-bold text-xs shadow-md"
                 >
                   Order on WhatsApp
                 </SpecularButton>

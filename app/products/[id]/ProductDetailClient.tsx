@@ -195,11 +195,11 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
                 intensity={2.4}
                 shineSize={30}
                 shineFade={45}
-                thickness={2.5}
+                thickness={1.2}
                 speed={0.7}
                 autoAnimate={true}
                 followMouse={true}
-                className="flex-1 py-4 px-6 font-bold text-sm shadow-md hover:shadow-lg transition"
+                className="flex-1 font-bold text-sm shadow-md hover:shadow-lg transition"
               >
                 <span>Order on WhatsApp</span>
                 <span>→</span>
@@ -217,7 +217,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
                 intensity={1}
                 thickness={1.2}
                 followMouse
-                className="py-4 px-6 font-bold text-sm border border-goodiiz-green/30"
+                className="font-bold text-sm border border-goodiiz-green/30"
               >
                 Inquire Bulk B2B
               </SpecularButton>
