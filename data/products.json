@@ -25,7 +25,7 @@
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "almond-mini-bold",
@@ -161,7 +161,7 @@
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "anjeer-fruit-slice",
@@ -281,7 +281,7 @@
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "abc-malt",
@@ -425,7 +425,7 @@
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "malli-thooduvalai-powder",
@@ -529,7 +529,7 @@
     "category": "Seeds & Staples",
     "shortDescription": "Native small brown chickpeas packed with dietary iron.",
     "fullDescription": "Unpolished desi brown chana cultivated through natural crop rotation. High in resistant starch and low glycemic fuel for the whole day.",
-    "image": "/images/products/Black-chana.webp",
+    "image": "/images/products/black-chana.webp",
     "price": "₹85",
     "priceRange": "250g",
     "features": [
@@ -597,7 +597,7 @@
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "gulgand",
@@ -605,7 +605,7 @@
     "category": "Treats & Sweeteners",
     "shortDescription": "Sun-cooked Ayurvedic preserve of fresh pink rose petals.",
     "fullDescription": "Slow-infused under solar warmth with rock candy sugar and Chaitri rose petals. Renowned for cooling body heat and calming acidity.",
-    "image": "/images/products/Gulkand.webp",
+    "image": "/images/products/gulkand.webp",
     "price": "₹195",
     "priceRange": "250g",
     "features": [
@@ -629,7 +629,7 @@
     "category": "Treats & Sweeteners",
     "shortDescription": "Unpasteurized multi-floral raw honey from wild hives.",
     "fullDescription": "Harvested straight from Western Ghats floral apiaries, cold-filtered without micro-heating to retain living enzymes, pollens, and vitamins.",
-    "image": "/images/products/Honey.webp",
+    "image": "/images/products/honey.webp",
     "price": "₹250 - ₹750",
     "priceRange": "250g - 1kg",
     "features": [
@@ -649,7 +649,7 @@
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "srikrishna-oil-gingelly",
@@ -681,7 +681,7 @@
     "category": "Treats & Sweeteners",
     "shortDescription": "Crunchy Kovilpatti-style roasted peanut jaggery brittle.",
     "fullDescription": "Crunchy, golden square bars made with premium roasted native peanuts and rich jaggery syrup. No liquid glucose or white sugar added.",
-    "image": "/images/products/Peanut.webp",
+    "image": "/images/products/peanut.webp",
     "price": "₹75",
     "priceRange": "250g",
     "features": [
@@ -805,6 +805,6 @@
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5.0
+    "rating": 5
   }
 ]
