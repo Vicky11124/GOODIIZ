@@ -37,56 +37,61 @@ export default function Footer() {
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <Link href="/products" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Farm Produce
+                  All Products
                 </Link>
               </li>
               <li>
-                <a href="#agro-calculator" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
+                <Link href="/#agro-calculator" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
                   Nutri-Advisor
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/about" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Our Story
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Contact & Dispatch
+                  Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Goodiiz Commodities */}
+          {/* Goodiiz Categories */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-goodiiz-gold">
-              GOODIIZ Categories
+              Product Categories
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <Link href="/products" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Whole Jumbo Cashews
+                <Link href="/products?cat=Nuts" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
+                  Nuts
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Kashmiri Almonds
+                <Link href="/products?cat=Dry%20Fruits" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
+                  Dry Fruits
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Vedic A2 Bilona Ghee
+                <Link href="/products?cat=Healthy%20Malts%20%26%20Powders" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
+                  Healthy Malts & Powders
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Raw Forest Honey
+                <Link href="/products?cat=Seeds%20%26%20Staples" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
+                  Seeds & Staples
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
-                  Sun-Dried Raisins & Amla
+                <Link href="/products?cat=Treats%20%26%20Sweeteners" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
+                  Treats & Sweeteners
+                </Link>
+              </li>
+              <li>
+                <Link href="/products?cat=Dairy" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition">
+                  Dairy & Vedic Ghee
                 </Link>
               </li>
             </ul>
@@ -118,21 +123,6 @@ export default function Footer() {
                   </svg>
                   <span>Phone: +91 95000 84204</span>
                 </a>
-              </li>
-              <li>
-                <a href="mailto:info@goodiiz.in" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition flex items-center gap-2">
-                  <svg className="w-4 h-4 text-goodiiz-gold shrink-0 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span>Email: info@goodiiz.in</span>
-                </a>
-              </li>
-              <li className="text-[11px] text-goodiiz-cream/60 pt-2 flex items-start gap-2 leading-relaxed">
-                <svg className="w-4 h-4 text-goodiiz-gold shrink-0 fill-none stroke-current stroke-2 mt-0.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span>Processing & Farm Coordination: Tiruchirappalli & Regional Cooperatives, India</span>
               </li>
             </ul>
           </div>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Product } from '../lib/products'
 import SpecularButton from '@/components/ui/SpecularButton'
 import MagicProductCard from '@/components/ui/MagicProductCard'
+import { Package } from 'lucide-react'
 
 interface Props {
   initialProducts: Product[]
@@ -15,21 +16,19 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
   const [selectedVariants, setSelectedVariants] = useState<Record<string, number>>({})
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null)
 
-  const categories = ['All', 'Nuts', 'Dairy', 'Dry Fruits', 'Treats']
+  const categories = [
+    'All',
+    'Nuts',
+    'Dry Fruits',
+    'Healthy Malts & Powders',
+    'Seeds & Staples',
+    'Treats & Sweeteners',
+    'Dairy',
+  ]
 
   const filtered = selectedCategory === 'All'
     ? initialProducts
     : initialProducts.filter((p) => p.category === selectedCategory)
-
-  const getEmoji = (category: string) => {
-    switch (category) {
-      case 'Nuts': return '🥜'
-      case 'Dairy': return '🥛'
-      case 'Dry Fruits': return '🍇'
-      case 'Treats': return '🍯'
-      default: return '🎁'
-    }
-  }
 
   const handleVariantChange = (productId: string, variantIndex: number) => {
     setSelectedVariants((prev) => ({
@@ -65,8 +64,8 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
           </Link>
         </div>
 
-        {/* Category Pills */}
-        <div className="flex flex-wrap gap-2.5 mb-10">
+        {/* Category Pills (Single line swipeable on mobile, compact 1-2 lines on desktop) */}
+        <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 mb-6 sm:mb-8 sm:flex-wrap items-center">
           {categories.map((cat) => {
             const count = cat === 'All' 
               ? initialProducts.length 
@@ -76,14 +75,14 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
-                    ? 'bg-goodiiz-green text-white shadow-card scale-105'
+                    ? 'bg-goodiiz-green text-white shadow-sm scale-100'
                     : 'bg-white text-goodiiz-brown border border-goodiiz-gold/20 hover:border-goodiiz-green hover:bg-goodiiz-cream-light'
                 }`}
               >
                 <span>{cat}</span>
-                <span className={`text-[11px] px-2 py-0.5 rounded-full ${
+                <span className={`text-[10px] sm:text-[11px] px-1.5 py-0.2 rounded-full ${
                   selectedCategory === cat ? 'bg-goodiiz-gold text-goodiiz-green-dark' : 'bg-goodiiz-cream text-goodiiz-brown/70'
                 }`}>
                   {count}
@@ -129,8 +128,9 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
                         className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-4xl sm:text-6xl md:text-7xl bg-goodiiz-cream-dark">
-                        {getEmoji(product.category)}
+                      <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 text-goodiiz-brown/50 bg-goodiiz-cream-dark">
+                        <Package className="w-12 h-12 text-goodiiz-gold/60" />
+                        <span className="text-[10px] font-semibold uppercase tracking-wider">No Image</span>
                       </div>
                     )}
 
@@ -168,9 +168,9 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
                       </p>
                     </div>
 
-                    {/* Features Badges */}
+                    {/* Features Badges (Shown inside Quick View / Details on mobile, visible on desktop) */}
                     {product.features && product.features.length > 0 && (
-                      <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                      <div className="hidden sm:flex flex-wrap gap-1 sm:gap-1.5">
                         {product.features.slice(0, 3).map((feat, i) => (
                           <span
                             key={i}
@@ -210,18 +210,18 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
 
                 {/* Card Footer: Live Price & Instant WhatsApp Order Button */}
                 <div className="p-3 sm:p-5 md:p-6 pt-0 space-y-2 sm:space-y-3">
-                  <div className="flex justify-between items-baseline pt-2 sm:pt-3 border-t border-goodiiz-cream">
+                  <div className="flex justify-between items-end pt-2 sm:pt-3 border-t border-goodiiz-cream">
                     <div>
-                      <div className="text-[8px] sm:text-[10px] text-goodiiz-brown/60 uppercase font-bold">Selected Price</div>
-                      <div className="text-base sm:text-xl md:text-2xl font-bold font-serif text-goodiiz-gold">
+                      <div className="text-[8px] sm:text-[10px] text-goodiiz-brown/60 uppercase font-bold tracking-wider">Price</div>
+                      <div className="text-base sm:text-xl md:text-2xl font-bold font-serif text-goodiiz-gold leading-tight">
                         {displayPrice}
                       </div>
                     </div>
                     <Link
                       href={`/products/${product.id}`}
-                      className="text-[10px] sm:text-xs font-bold text-goodiiz-green hover:text-goodiiz-gold transition whitespace-nowrap"
+                      className="text-[10px] sm:text-xs font-bold text-goodiiz-green hover:text-goodiiz-gold transition whitespace-nowrap bg-goodiiz-cream px-2 py-1 rounded-md sm:bg-transparent sm:p-0"
                     >
-                      Details & Spec →
+                      Details →
                     </Link>
                   </div>
 
@@ -292,8 +292,9 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-7xl">
-                      {getEmoji(quickViewProduct.category)}
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-goodiiz-brown/50">
+                      <Package className="w-16 h-16 text-goodiiz-gold/60" />
+                      <span className="text-xs font-semibold uppercase tracking-wider">Image Unavailable</span>
                     </div>
                   )}
                 </div>

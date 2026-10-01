@@ -18,9 +18,52 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'GOODIIZ - Premium Agro Nuts, Dry Fruits & Traditional Superfoods',
-  description: '100% farm-sourced, naturally processed Grade W240 Cashews, Kashmiri Almonds, Vedic Bilona Ghee, Raw Forest Honey, and sun-dried treats. Direct from sustainable agro-farms.',
-  keywords: 'agro products, cashew nuts, dry fruits, farm direct, organic honey, A2 cow bilona ghee, wholesale nuts, healthy snacks',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://goodiiz.com'),
+  title: {
+    default: 'GOODIIZ | Nuts, Dry Fruits & Natural Food Products',
+    template: '%s | GOODIIZ',
+  },
+  description: 'Premium nuts, dry fruits, traditional A2 ghee, and natural food treats sourced directly from trusted agro farms.',
+  keywords: [
+    'dry fruits',
+    'cashews',
+    'almonds',
+    'pistachios',
+    'raisins',
+    'A2 bilona ghee',
+    'natural honey',
+    'healthy snacks',
+    'agro products',
+  ],
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'GOODIIZ | Nuts, Dry Fruits & Natural Food Products',
+    description: 'Premium nuts, dry fruits, traditional A2 ghee, and natural food treats sourced directly from trusted agro farms.',
+    url: 'https://goodiiz.com',
+    siteName: 'GOODIIZ',
+    images: [
+      {
+        url: '/images/hero/agro_hero.webp',
+        width: 1200,
+        height: 630,
+        alt: 'GOODIIZ - Natural Nuts, Dry Fruits & Treats',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GOODIIZ | Nuts, Dry Fruits & Natural Food Products',
+    description: 'Premium nuts, dry fruits, traditional A2 ghee, and natural food treats sourced directly from trusted agro farms.',
+    images: ['/images/hero/agro_hero.webp'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
@@ -28,8 +71,30 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'GOODIIZ',
+    url: 'https://goodiiz.com',
+    logo: 'https://goodiiz.com/images/hero/agro_hero.webp',
+    description: 'Nuts, Dry Fruits, Ghee & Natural Treats',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91-9500084204',
+      contactType: 'customer service',
+      areaServed: 'IN',
+      availableLanguage: ['en', 'ta', 'hi'],
+    },
+  }
+
   return (
     <html lang="en" className={`${jakarta.variable} ${playfair.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-goodiiz-cream text-goodiiz-brown antialiased selection:bg-goodiiz-gold selection:text-white font-sans min-h-screen flex flex-col justify-between">
         <Header />
         <main className="flex-grow">{children}</main>

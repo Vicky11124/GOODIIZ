@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Product } from '@/app/lib/products'
 import SpecularButton from '@/components/ui/SpecularButton'
+import { Package } from 'lucide-react'
 
 interface Props {
   product: Product
@@ -13,16 +14,6 @@ interface Props {
 export default function ProductDetailClient({ product, relatedProducts }: Props) {
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0)
   const [quantity, setQuantity] = useState(1)
-
-  const getEmoji = (category: string) => {
-    switch (category) {
-      case 'Nuts': return '🥜'
-      case 'Dairy': return '🥛'
-      case 'Dry Fruits': return '🍇'
-      case 'Treats': return '🍯'
-      default: return '🎁'
-    }
-  }
 
   const activeVariant = product.variants && product.variants.length > 0
     ? product.variants[selectedVariantIdx]
@@ -66,7 +57,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
                   className="w-full h-full object-cover hover:scale-105 transition duration-500"
                 />
               ) : (
-                <div className="text-8xl">{getEmoji(product.category)}</div>
+                <div className="flex flex-col items-center justify-center gap-2 text-goodiiz-brown/50">
+                  <Package className="w-16 h-16 text-goodiiz-gold/60" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">Image Unavailable</span>
+                </div>
               )}
 
               <div className="absolute top-3 left-3 bg-goodiiz-green/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
@@ -276,7 +270,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
                             className="w-full h-full object-contain p-1 group-hover:scale-105 transition"
                           />
                         ) : (
-                          getEmoji(rel.category)
+                          <Package className="w-8 h-8 text-goodiiz-gold/60" />
                         )}
                       </div>
                       <h4 className="text-xs sm:text-base font-serif font-bold text-goodiiz-green group-hover:text-goodiiz-gold transition line-clamp-2">

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { readProducts, writeProducts } from '@/app/lib/db'
 import { Product, defaultProducts } from '@/app/lib/products'
 
@@ -59,6 +60,10 @@ export async function POST(request: Request) {
     const updated = [newProduct, ...currentProducts]
     await writeProducts(updated)
 
+    revalidatePath('/')
+    revalidatePath('/products')
+    revalidatePath(`/products/${newProduct.id}`)
+
     return NextResponse.json(newProduct, { status: 201 })
   } catch (error) {
     console.error('Error creating product:', error)
@@ -75,10 +80,14 @@ export async function PUT(request: Request) {
     const body = await request.json()
     if (body.action === 'reset') {
       await writeProducts(defaultProducts)
+      revalidatePath('/')
+      revalidatePath('/products')
       return NextResponse.json({ message: 'Reset to default products', products: defaultProducts })
     }
     if (Array.isArray(body.products)) {
       await writeProducts(body.products)
+      revalidatePath('/')
+      revalidatePath('/products')
       return NextResponse.json({ message: 'Catalog updated successfully', products: body.products })
     }
     return NextResponse.json({ error: 'Invalid bulk action' }, { status: 400 })

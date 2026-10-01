@@ -16,10 +16,9 @@ export default function AgroHero({ onOpenSampleModal }: AgroHeroProps) {
           loop
           muted
           playsInline
-          poster="/images/hero/agro_hero.jpg"
+          poster="/images/hero/agro_hero.webp"
           className="absolute inset-0 w-full h-full object-cover opacity-100 brightness-115 contrast-105 transform scale-105 transition-transform duration-1000"
         >
-          <source src="/assets/hero-video.mp4" type="video/mp4" />
           <source src="/videos/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Balanced neutral overlay for comfortable brightness and crisp text */}

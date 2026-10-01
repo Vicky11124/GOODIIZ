@@ -9,8 +9,6 @@ export default function AgroClientReviews() {
   const reviews = [
     {
       type: 'b2b',
-      name: 'Rameshwar Kulkarni',
-      role: 'Procurement Head, Veda Wellness Centers',
       rating: 5,
       quote: 'We order 150kg of Srirangam A2 Bilona Ghee and Wild Honey monthly for our panchakarma therapies. The aroma and lab purity certificate with every lot is unmatched in the industry.',
       tag: 'Verified B2B Client',
@@ -18,17 +16,13 @@ export default function AgroClientReviews() {
     },
     {
       type: 'retail',
-      name: 'Ananya Deshmukh',
-      role: 'Nutritionist & Fitness Consultant',
       rating: 5,
       quote: 'The Grade W240 Jumbo Cashews and Kashmiri Almonds have zero artificial glaze. My clients notice the natural buttery crunch and sustained satiety within days of switching.',
-      tag: 'Health Consultant',
+      tag: 'Health Consultant Review',
       badge: 'Family Subscription',
     },
     {
       type: 'b2b',
-      name: 'Vikramaditya Singhania',
-      role: 'Director, Singhania Logistics & Exports',
       rating: 5,
       quote: 'For Diwali corporate gifting, GOODIIZ customized 600 luxury wooden agro boxes with our company logo and laser engraving. Delivered across 14 cities without a single damaged pack.',
       tag: 'Corporate Gifting Client',
@@ -36,11 +30,9 @@ export default function AgroClientReviews() {
     },
     {
       type: 'retail',
-      name: 'Dr. Srinivas Rao',
-      role: 'Ayurvedic Physician',
       rating: 5,
       quote: 'Their Honey Amla and Munakka Raisins are naturally sun-dried without sulphur fumigation. Excellent therapeutic grade and authentic Indian heritage quality.',
-      tag: 'Ayurvedic Specialist',
+      tag: 'Ayurvedic Specialist Review',
       badge: 'Regular Buyer',
     },
   ]
@@ -118,11 +110,11 @@ export default function AgroClientReviews() {
                   </p>
                 </div>
 
-                <div className="pt-3.5 sm:pt-5 mt-3.5 sm:mt-5 border-t border-goodiiz-cream flex items-center justify-between gap-2">
-                  <div className="min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-goodiiz-green truncate">{rev.name}</h4>
-                    <p className="text-[10px] sm:text-xs text-goodiiz-brown/60 truncate">{rev.role}</p>
-                  </div>
+                <div className="pt-3.5 sm:pt-4 mt-3.5 sm:mt-4 border-t border-goodiiz-cream flex items-center justify-between gap-2">
+                  <span className="text-[10px] sm:text-xs font-semibold text-goodiiz-green flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Verified Experience
+                  </span>
                   <span className="text-[9px] sm:text-[10px] text-goodiiz-gold font-bold uppercase tracking-wider bg-goodiiz-gold/10 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full whitespace-nowrap shrink-0">
                     {rev.tag}
                   </span>

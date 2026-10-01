@@ -1,222 +1,810 @@
 [
   {
-    "id": "crunchy-cashews-w240",
-    "name": "Crunchy Cashews W240",
+    "id": "cashews-regular",
+    "name": "Cashew Regular W240",
     "category": "Nuts",
     "shortDescription": "Whole jumbo cashews with buttery crisp texture.",
-    "fullDescription": "Hand-harvested jumbo Cashews (Grade W240) gently roasted to perfection. Naturally rich in iron, zinc, and healthy unsaturated fats.",
-    "image": "/images/products/cashews.jpg",
-    "price": "₹290 - ₹1,450",
-    "priceRange": "100g - 1kg",
+    "fullDescription": "Hand-harvested jumbo Cashews gently roasted to perfection. Naturally rich in zinc, magnesium, and healthy unsaturated fats.",
+    "image": "/images/products/cashews.webp",
+    "price": "₹240 - ₹480",
+    "priceRange": "250g - 500g",
     "features": [
       "Jumbo W240 Grade",
-      "Rich in Zinc & Iron",
-      "Zero Trans Fat"
+      "Zero Trans Fat",
+      "Rich in Zinc & Iron"
     ],
     "variants": [
       {
-        "name": "Cashew Regular 100g",
-        "price": "₹290"
+        "name": "Cashew Regular (250g)",
+        "price": "₹240"
       },
       {
-        "name": "Cashew Jumbo 500g",
-        "price": "₹750"
+        "name": "Cashew Regular (500g)",
+        "price": "₹480"
       }
     ],
     "inStock": true,
     "featured": true,
-    "rating": 5
+    "rating": 5.0
   },
   {
-    "id": "almonds",
-    "name": "Premium Almonds",
+    "id": "almond-mini-bold",
+    "name": "Almond Mini Bold",
     "category": "Nuts",
-    "shortDescription": "Handpicked premium-grade almonds, roasted to perfection.",
-    "fullDescription": "Our premium almonds are carefully selected from the finest orchards and roasted to bring out their natural, delicious flavor. Rich in Vitamin E and antioxidants, these almonds are perfect for daily nutrition and wellness.",
-    "image": "/images/products/almonds.jpg",
-    "price": "₹231 - ₹5,990",
-    "priceRange": "100g - 1kg",
+    "shortDescription": "Handpicked crisp almonds packed with Vitamin E.",
+    "fullDescription": "Selected from premium orchards, dried naturally to retain crunch and rich nutty flavor. Excellent for daily brain health and immunity.",
+    "image": "/images/products/almonds.webp",
+    "price": "₹365",
+    "priceRange": "250g",
     "features": [
       "Rich in Vitamin E",
-      "Antioxidants",
       "Heart Healthy",
       "Protein Rich"
     ],
     "variants": [
       {
-        "name": "Almond Regular (100g)",
-        "price": "₹231"
-      },
-      {
-        "name": "Almond Salted (250g)",
-        "price": "₹341"
-      },
-      {
-        "name": "Almond Premium (500g)",
-        "price": "₹652"
-      },
-      {
-        "name": "Almond Jumbo (1kg)",
-        "price": "₹1,254"
+        "name": "Almond Mini Bold (250g)",
+        "price": "₹365"
       }
-    ]
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
   },
   {
-    "id": "pistachios",
-    "name": "Roasted Pistachios",
+    "id": "fit-yum-almond",
+    "name": "Fit & Yum Almond",
     "category": "Nuts",
-    "shortDescription": "Salted and seed pistachios in regular and premium grades.",
-    "fullDescription": "Perfectly roasted and salted pistachios that offer a delightful crunch and authentic taste. Sourced from premium vineyards and carefully processed to maintain their natural goodness. Packed with protein and healthy fats.",
-    "image": "/images/products/pistachios.jpg",
-    "price": "₹242 - ₹3,740",
-    "priceRange": "100g - 1kg",
+    "shortDescription": "Gourmet roasted crunch almonds for active lifestyles.",
+    "fullDescription": "Specially roasted almond batch providing an instant boost of dietary fiber and plant protein with a delightful savory crunch.",
+    "image": "/images/products/fit-yum-almond.webp",
+    "price": "₹380",
+    "priceRange": "250g",
     "features": [
-      "Protein Rich",
-      "Energy Boost",
-      "Natural Fiber",
-      "Tasty"
+      "Slow Roasted",
+      "High Protein",
+      "Energy Boost"
     ],
     "variants": [
       {
-        "name": "Pista Salted Regular (100g)",
-        "price": "₹242"
-      },
-      {
-        "name": "Pista Seed Regular (250g)",
-        "price": "₹550"
-      },
-      {
-        "name": "Pista Premium (500g)",
-        "price": "₹1,100"
-      },
-      {
-        "name": "Pista Seed Premium (1kg)",
-        "price": "₹3,740"
+        "name": "Fit & Yum Almond (250g)",
+        "price": "₹380"
       }
-    ]
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "pista-salted",
+    "name": "Pista Salted",
+    "category": "Nuts",
+    "shortDescription": "Premium salted & roasted whole pistachios in shell.",
+    "fullDescription": "Perfectly roasted and lightly salted pistachios that offer an authentic crack-and-crunch snacking experience.",
+    "image": "/images/products/pista-salted.webp",
+    "price": "₹550",
+    "priceRange": "250g",
+    "features": [
+      "Naturally Opened",
+      "Low Sodium Roast",
+      "Antioxidant Rich"
+    ],
+    "variants": [
+      {
+        "name": "Pista Salted (250g)",
+        "price": "₹550"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "walnut-premium",
+    "name": "Walnut Premium Kernels",
+    "category": "Nuts",
+    "shortDescription": "Extra-light brain food walnut halves rich in Omega-3.",
+    "fullDescription": "Directly sourced whole walnut kernels with zero bitterness. Packed with alpha-linolenic acid (ALA) for optimum cognitive function.",
+    "image": "/images/products/walnut.webp",
+    "price": "₹475 - ₹1,300",
+    "priceRange": "250g - 1kg",
+    "features": [
+      "High Omega-3",
+      "Brain Superfood",
+      "Vacuum Sealed"
+    ],
+    "variants": [
+      {
+        "name": "Walnut Regular (250g)",
+        "price": "₹475"
+      },
+      {
+        "name": "Walnut Premium (250g)",
+        "price": "₹600"
+      },
+      {
+        "name": "Walnut Premium (500g)",
+        "price": "₹650"
+      },
+      {
+        "name": "Walnut Jumbo (1kg)",
+        "price": "₹1,300"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "mixed-nuts",
+    "name": "Royal Mixed Nuts",
+    "category": "Nuts",
+    "shortDescription": "Wholesome assortment of premium cashews, almonds, and walnuts.",
+    "fullDescription": "A power-packed medley of hand-selected premium nuts for daily vitality, pre-workout snacking, and wholesome energy.",
+    "image": "/images/products/mixed-nuts.webp",
+    "price": "₹275 - ₹550",
+    "priceRange": "250g - 500g",
+    "features": [
+      "Assorted Medley",
+      "No Preservatives",
+      "Protein Loaded"
+    ],
+    "variants": [
+      {
+        "name": "Mixed Nuts (250g)",
+        "price": "₹275"
+      },
+      {
+        "name": "Mixed Nuts (500g)",
+        "price": "₹550"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 5.0
+  },
+  {
+    "id": "anjeer-fruit-slice",
+    "name": "Anjeer Fruit Slice (Dried Figs)",
+    "category": "Dry Fruits",
+    "shortDescription": "Tender sun-dried Mediterranean fig slices.",
+    "fullDescription": "Plump, naturally sweet dried figs packed with dietary fiber, calcium, and iron. Promotes healthy digestion and bone strength.",
+    "image": "/images/products/dried-figs.webp",
+    "price": "₹375",
+    "priceRange": "250g",
+    "features": [
+      "Rich in Calcium",
+      "Digestive Fiber",
+      "100% Sun-Dried"
+    ],
+    "variants": [
+      {
+        "name": "Anjeer Slice (250g)",
+        "price": "₹375"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "amla-dry",
+    "name": "Amla Dry",
+    "category": "Dry Fruits",
+    "shortDescription": "Traditional sun-dried Indian gooseberries.",
+    "fullDescription": "Naturally sun-dried Indian amla slices with concentrated Vitamin C for daily immunity, radiant skin, and digestive wellness.",
+    "image": "/images/products/amla.webp",
+    "price": "₹150",
+    "priceRange": "250g",
+    "features": [
+      "High Vitamin C",
+      "Immunity Booster",
+      "Traditional Herb"
+    ],
+    "variants": [
+      {
+        "name": "Amla Dry (250g)",
+        "price": "₹150"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.7
+  },
+  {
+    "id": "indian-raisin-seeds",
+    "name": "Indian Raisin Seeds",
+    "category": "Dry Fruits",
+    "shortDescription": "Golden sun-cured sweet raisins with wholesome seeds.",
+    "fullDescription": "Traditional golden raisins loaded with natural fruit sugars, bioflavonoids, and dietary iron to combat fatigue naturally.",
+    "image": "/images/products/raisins.webp",
+    "price": "₹250",
+    "priceRange": "250g",
+    "features": [
+      "Iron Dense",
+      "Natural Energy",
+      "Sun Cured"
+    ],
+    "variants": [
+      {
+        "name": "Indian Raisins (250g)",
+        "price": "₹250"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.7
+  },
+  {
+    "id": "black-raisin-seeds",
+    "name": "Black Raisin Seeds",
+    "category": "Dry Fruits",
+    "shortDescription": "Large seeded black grapes dried under natural sunlight.",
+    "fullDescription": "Jumbo black raisins cherished for their high antioxidant profile, hemoglobin support, and blood-purifying properties.",
+    "image": "/images/products/black-raisins.webp",
+    "price": "₹250",
+    "priceRange": "250g",
+    "features": [
+      "Anthocyanin Rich",
+      "Blood Purifier",
+      "Digestive Aid"
+    ],
+    "variants": [
+      {
+        "name": "Black Raisins (250g)",
+        "price": "₹250"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.8
+  },
+  {
+    "id": "red-banana-malt",
+    "name": "Red Banana Malt",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "Traditional health drink powder made with real Sevvazhai (Red Banana).",
+    "fullDescription": "Nutrient-dense traditional malt powder prepared with heritage red bananas, roasted nuts, and whole grains. Ideal for growing children and active adults.",
+    "image": "/images/products/red-banana-malt.webp",
+    "price": "₹295",
+    "priceRange": "250g",
+    "features": [
+      "100% Real Red Banana",
+      "No White Sugar",
+      "Immunity & Energy"
+    ],
+    "variants": [
+      {
+        "name": "Red Banana Malt (250g)",
+        "price": "₹295"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 5.0
+  },
+  {
+    "id": "abc-malt",
+    "name": "ABC Malt (Apple, Beetroot, Carrot)",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "The miracle ABC formulation in an instant wholesome malt.",
+    "fullDescription": "Crafted from fresh Apple, Beetroot, and Carrot infused with roasted nuts and country sugar. Enhances natural glow, stamina, and hemoglobin.",
+    "image": "/images/products/abc-poweder.webp",
+    "price": "₹295",
+    "priceRange": "250g",
+    "features": [
+      "Skin Glow Formula",
+      "Rich in Iron & Vitamins",
+      "Kid Friendly"
+    ],
+    "variants": [
+      {
+        "name": "ABC Malt (250g)",
+        "price": "₹295"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "beetroot-nuts-malt",
+    "name": "Beetroot Nuts Malt",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "Superfood beetroot blend enriched with ground cashews & almonds.",
+    "fullDescription": "A rich crimson nourishing drink mix formulated to boost iron levels and athletic performance through natural nitrates and minerals.",
+    "image": "/images/products/beetroot-malt.webp",
+    "price": "₹295",
+    "priceRange": "250g",
+    "features": [
+      "Hemoglobin Booster",
+      "Natural Energy",
+      "Nuts Fortified"
+    ],
+    "variants": [
+      {
+        "name": "Beetroot Nuts Malt (250g)",
+        "price": "₹295"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "dry-nuts-millets",
+    "name": "Dry Nuts Millets Mix",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "Traditional multigrain & nut porridge mix (Sathu Maavu).",
+    "fullDescription": "A wholesome fusion of roasted traditional millets, whole pulses, and nuts. Provides balanced sustenance and sustained glycemic control.",
+    "image": "/images/products/mixed-dry-fruits.webp",
+    "price": "₹200",
+    "priceRange": "250g",
+    "features": [
+      "Multi-Millet Power",
+      "Fiber Rich",
+      "Family Breakfast Mix"
+    ],
+    "variants": [
+      {
+        "name": "Dry Nuts Millets (250g)",
+        "price": "₹200"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "pirandai-soup-powder",
+    "name": "Pirandai Soup Powder",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "Veldt Grape herbal soup mix for joint and bone strength.",
+    "fullDescription": "Prepared with handpicked Pirandai (Cissus quadrangularis), cumin, and native spices. Widely recognized in Siddha for bone healing and gut comfort.",
+    "image": "/images/products/pirandai-powder.webp",
+    "price": "₹180",
+    "priceRange": "100g",
+    "features": [
+      "Joint & Bone Health",
+      "Improves Digestion",
+      "Authentic Siddha Spice"
+    ],
+    "variants": [
+      {
+        "name": "Pirandai Soup Powder (100g)",
+        "price": "₹180"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "vallarai-soup-powder",
+    "name": "Vallarai Soup Powder",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "Brahmi Gotu Kola soup blend for brain focus and calm.",
+    "fullDescription": "Formulated with sun-dried Vallarai leaves and aromatic warming spices to stimulate memory power, reduce stress, and improve mental clarity.",
+    "image": "/images/products/3-vallarai-soup.webp",
+    "price": "₹180",
+    "priceRange": "112g",
+    "features": [
+      "Memory Booster",
+      "Cognitive Focus",
+      "Herbal Soup Blend"
+    ],
+    "variants": [
+      {
+        "name": "Vallarai Soup Powder (112g)",
+        "price": "₹180"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "mudavattu-kilangu-powder",
+    "name": "Mudavattu Kilangu Soup Powder",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "Rare medicinal fern rhizome powder from Eastern Ghats.",
+    "fullDescription": "Extracted from wild Kollimalai Mudavattu Kilangu. Celebrated in traditional hill folklore for relieving knee pain and rejuvenating joints.",
+    "image": "/images/products/mudavattu-kilangu-powder.webp",
+    "price": "₹90",
+    "priceRange": "100g",
+    "features": [
+      "Rare Hill Herb",
+      "Knee & Joint Comfort",
+      "100% Forest Sourced"
+    ],
+    "variants": [
+      {
+        "name": "Mudavattu Kilangu (100g)",
+        "price": "₹90"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 5.0
+  },
+  {
+    "id": "malli-thooduvalai-powder",
+    "name": "Pixles - Malli Thooduvalai Powder",
+    "category": "Healthy Malts & Powders",
+    "shortDescription": "Purple Fruited Pea Eggplant herbal blend with coriander.",
+    "fullDescription": "Traditional herbal formulation of Thooduvalai leaves and Malli seeds. Ideal for relieving chest congestion, chronic cough, and seasonal cold.",
+    "image": "/images/products/thoothuvalai-powder.webp",
+    "price": "₹100",
+    "priceRange": "100g",
+    "features": [
+      "Respiratory Comfort",
+      "Anti-Cold Herb",
+      "Pure Village Harvest"
+    ],
+    "variants": [
+      {
+        "name": "Malli Thooduvalai (100g)",
+        "price": "₹100"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "chia-seeds",
+    "name": "Raw Chia Seeds",
+    "category": "Seeds & Staples",
+    "shortDescription": "Supercharged black chia seeds with dense soluble fiber.",
+    "fullDescription": "Premium grade unroasted chia seeds rich in Omega-3 fatty acids and minerals. Forms an energizing gel when soaked in smoothies and water.",
+    "image": "/images/products/chia-seeds.webp",
+    "price": "₹125",
+    "priceRange": "250g",
+    "features": [
+      "High Soluble Fiber",
+      "Plant Omega-3",
+      "Hydration Booster"
+    ],
+    "variants": [
+      {
+        "name": "Chia Seeds (250g)",
+        "price": "₹125"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "basil-seeds",
+    "name": "Basil Seeds (Sabja / Tukmaria)",
+    "category": "Seeds & Staples",
+    "shortDescription": "Natural cooling sweet basil seeds for summer drinks.",
+    "fullDescription": "Natural gut-soothing and body-cooling Sabja seeds. Swells rapidly in juices, falooda, and lemon water to aid weight management.",
+    "image": "/images/products/basil-seeds.webp",
+    "price": "₹150",
+    "priceRange": "250g",
+    "features": [
+      "Natural Body Coolant",
+      "Gut Comfort",
+      "Weight Support"
+    ],
+    "variants": [
+      {
+        "name": "Basil Seeds (250g)",
+        "price": "₹150"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "flax-seeds",
+    "name": "Golden Flax Seeds",
+    "category": "Seeds & Staples",
+    "shortDescription": "Cold-cured whole brown flaxseeds for heart & hair health.",
+    "fullDescription": "Loaded with lignans and plant-based ALA Omega-3 fats. Grind or roast lightly to sprinkle over daily rotis, salads, and curds.",
+    "image": "/images/products/flax-seeds.webp",
+    "price": "₹75",
+    "priceRange": "250g",
+    "features": [
+      "Lignan Rich",
+      "Heart & Hormonal Health",
+      "High Fiber"
+    ],
+    "variants": [
+      {
+        "name": "Flax Seeds (250g)",
+        "price": "₹75"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.7
+  },
+  {
+    "id": "black-chana",
+    "name": "Desi Black Chana",
+    "category": "Seeds & Staples",
+    "shortDescription": "Native small brown chickpeas packed with dietary iron.",
+    "fullDescription": "Unpolished desi brown chana cultivated through natural crop rotation. High in resistant starch and low glycemic fuel for the whole day.",
+    "image": "/images/products/Black-chana.webp",
+    "price": "₹85",
+    "priceRange": "250g",
+    "features": [
+      "Unpolished Desi Seed",
+      "Low Glycemic",
+      "High Protein & Iron"
+    ],
+    "variants": [
+      {
+        "name": "Black Chana (250g)",
+        "price": "₹85"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "white-chana",
+    "name": "Premium White Chana (Kabuli)",
+    "category": "Seeds & Staples",
+    "shortDescription": "Jumbo cleaned Kabuli garbanzo chickpeas.",
+    "fullDescription": "Evenly graded white chickpeas with smooth skins and soft, buttery cooking texture. High in vegetarian protein and dietary minerals.",
+    "image": "/images/products/white-chana.webp",
+    "price": "₹110",
+    "priceRange": "250g",
+    "features": [
+      "Jumbo Cleaned",
+      "Easy Digestibility",
+      "Protein Power"
+    ],
+    "variants": [
+      {
+        "name": "White Chana (250g)",
+        "price": "₹110"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "karuppatti-katti",
+    "name": "Karuppatti Katti / Sillu Karupatti",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Authentic Palm Jaggery crafted from Palmyra tree sap.",
+    "fullDescription": "Traditional unrefined palm jaggery blocks naturally rich in iron, potassium, and magnesium. The perfect mineral sweetener for coffee and sweets.",
+    "image": "/images/products/karupatti-sugar.webp",
+    "price": "₹250 - ₹1,000",
+    "priceRange": "250g - 1kg",
+    "features": [
+      "100% Pure Palm Sap",
+      "Zero Refined Sugar",
+      "Rich in Native Iron"
+    ],
+    "variants": [
+      {
+        "name": "Karuppatti Pack (250g)",
+        "price": "₹250"
+      },
+      {
+        "name": "Karuppatti Block (1kg)",
+        "price": "₹1,000"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 5.0
+  },
+  {
+    "id": "gulgand",
+    "name": "Heritage Gulkand (Damask Rose Jam)",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Sun-cooked Ayurvedic preserve of fresh pink rose petals.",
+    "fullDescription": "Slow-infused under solar warmth with rock candy sugar and Chaitri rose petals. Renowned for cooling body heat and calming acidity.",
+    "image": "/images/products/Gulkand.webp",
+    "price": "₹195",
+    "priceRange": "250g",
+    "features": [
+      "Sun-Cooked Chaitri Rose",
+      "Natural Acidity Relief",
+      "Ayurvedic Treat"
+    ],
+    "variants": [
+      {
+        "name": "Gulkand Jar (250g)",
+        "price": "₹195"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "pure-honey",
+    "name": "Wild Forest Raw Honey",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Unpasteurized multi-floral raw honey from wild hives.",
+    "fullDescription": "Harvested straight from Western Ghats floral apiaries, cold-filtered without micro-heating to retain living enzymes, pollens, and vitamins.",
+    "image": "/images/products/Honey.webp",
+    "price": "₹250 - ₹750",
+    "priceRange": "250g - 1kg",
+    "features": [
+      "100% Raw & Unheated",
+      "Enzyme Active",
+      "Zero High Fructose Syrups"
+    ],
+    "variants": [
+      {
+        "name": "Raw Honey (250g)",
+        "price": "₹250"
+      },
+      {
+        "name": "Raw Honey (1kg)",
+        "price": "₹750"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 5.0
+  },
+  {
+    "id": "srikrishna-oil-gingelly",
+    "name": "Srikrishna Gingelly Oil (Sesame)",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Wood cold-pressed pure sesame oil with palm jaggery.",
+    "fullDescription": "Extracted using traditional wooden chekku methods from black sesame seeds and touch of palm jaggery for authentic golden aroma and cooking health.",
+    "image": "/images/products/oil-gingelly.webp",
+    "price": "₹120",
+    "priceRange": "500ml",
+    "features": [
+      "Wood Cold Pressed",
+      "No Chemical Refining",
+      "Heart Friendly Lignans"
+    ],
+    "variants": [
+      {
+        "name": "Gingelly Oil (500ml)",
+        "price": "₹120"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.9
+  },
+  {
+    "id": "peanut-candy",
+    "name": "Peanut Candy (Kadalai Mittai)",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Crunchy Kovilpatti-style roasted peanut jaggery brittle.",
+    "fullDescription": "Crunchy, golden square bars made with premium roasted native peanuts and rich jaggery syrup. No liquid glucose or white sugar added.",
+    "image": "/images/products/Peanut.webp",
+    "price": "₹75",
+    "priceRange": "250g",
+    "features": [
+      "Pure Jaggery Glaze",
+      "Protein Chikki",
+      "Zero White Sugar"
+    ],
+    "variants": [
+      {
+        "name": "Peanut Candy (250g)",
+        "price": "₹75"
+      }
+    ],
+    "inStock": true,
+    "featured": true,
+    "rating": 4.9
+  },
+  {
+    "id": "brown-sugar",
+    "name": "Natural Brown Cane Sugar",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Unbleached cane jaggery powder for tea, baking & sweets.",
+    "fullDescription": "Produced directly from concentrated sugarcane juice without sulfur treatment or bone char filtering. Retains natural molasses and trace minerals.",
+    "image": "/images/products/brownsugar.webp",
+    "price": "₹120",
+    "priceRange": "500g",
+    "features": [
+      "Sulfur Free",
+      "Molasses Rich",
+      "Direct From Mills"
+    ],
+    "variants": [
+      {
+        "name": "Brown Sugar (500g)",
+        "price": "₹120"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.8
+  },
+  {
+    "id": "green-slice-gelly",
+    "name": "Green Slice Gelly Treats",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Soft crystallized fruit confectionery slices.",
+    "fullDescription": "Delicate and tender fruit confection prepared with natural fruit pectins and refreshing herbal notes. A crowd-favorite family snack.",
+    "image": "/images/products/green-slice-gelly.webp",
+    "price": "₹270",
+    "priceRange": "250g",
+    "features": [
+      "Soft & Tender",
+      "Fresh Batch Confection",
+      "Family Favorite"
+    ],
+    "variants": [
+      {
+        "name": "Green Slice (250g)",
+        "price": "₹270"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.7
+  },
+  {
+    "id": "mixed-gelly",
+    "name": "Mixed Fruit Gelly Slices",
+    "category": "Treats & Sweeteners",
+    "shortDescription": "Multi-flavor heritage fruit jelly cubes.",
+    "fullDescription": "A delightful assortment of soft, translucent multi-flavored fruit jelly sweets crafted with care for gifting and celebrations.",
+    "image": "/images/products/mixed-gelly.webp",
+    "price": "₹250 - ₹500",
+    "priceRange": "250g - 500g",
+    "features": [
+      "Multi Fruit Notes",
+      "Melt-in-Mouth Texture",
+      "Festive Treat"
+    ],
+    "variants": [
+      {
+        "name": "Mixed Gelly (250g)",
+        "price": "₹250"
+      },
+      {
+        "name": "Mixed Gelly (500g)",
+        "price": "₹500"
+      }
+    ],
+    "inStock": true,
+    "featured": false,
+    "rating": 4.7
   },
   {
     "id": "ghee",
-    "name": "Srirangam Ghee",
+    "name": "Srirangam A2 Vedic Ghee",
     "category": "Dairy",
     "shortDescription": "Pure cow milk ghee made with traditional Bilona method.",
-    "fullDescription": "Our Srirangam Ghee is prepared from premium A2 cow milk using the traditional Bilona method, ensuring authentic purity and rich aroma. No additives, no preservatives - just pure, golden goodness. Perfect for cooking and wellness.",
-    "image": "/images/products/ghee.jpg",
-    "price": "₹1,200 - ₹8,500",
+    "fullDescription": "Prepared from indigenous grass-fed cow milk using the Vedic Bilona curd-churning method. Granular texture, golden color, and divine aroma.",
+    "image": "/images/products/ghee.webp",
+    "price": "₹1,200 - ₹4,200",
     "priceRange": "250ml - 1000ml",
     "features": [
-      "A2 Milk",
-      "Bilona Method",
-      "Pure Aroma",
-      "100% Natural"
+      "A2 Indigenous Cow Milk",
+      "Traditional Bilona Churned",
+      "Zero Preservatives"
     ],
     "variants": [
       {
-        "name": "Ghee 250ml",
+        "name": "Ghee (250ml)",
         "price": "₹1,200"
       },
       {
-        "name": "Ghee 500ml",
+        "name": "Ghee (500ml)",
         "price": "₹2,200"
       },
       {
-        "name": "Ghee 1L",
+        "name": "Ghee (1L)",
         "price": "₹4,200"
       }
-    ]
-  },
-  {
-    "id": "raisins",
-    "name": "Natural Raisins",
-    "category": "Dry Fruits",
-    "shortDescription": "Naturally sweet raisins from finest vineyards.",
-    "fullDescription": "Our raisins are sourced from the finest Indian and imported vineyards, dried naturally to retain their sweetness and nutritional value. Rich in iron and natural energy, perfect for your daily wellness.",
-    "image": "/images/products/raisins.jpg",
-    "price": "₹88 - ₹2,420",
-    "priceRange": "100g - 1kg",
-    "features": [
-      "Iron Rich",
-      "Energy Dense",
-      "Natural Sweetness",
-      "No Added Sugar"
     ],
-    "variants": [
-      {
-        "name": "Indian Raisin (100g)",
-        "price": "₹88"
-      },
-      {
-        "name": "Sundakani Raisin (250g)",
-        "price": "₹231"
-      },
-      {
-        "name": "Munakka Green (500g)",
-        "price": "₹550"
-      },
-      {
-        "name": "Imported Raisin (1kg)",
-        "price": "₹2,420"
-      }
-    ]
-  },
-  {
-    "id": "amla",
-    "name": "Honey Amla",
-    "category": "Dry Fruits",
-    "shortDescription": "Sun-dried and honey preserved amla.",
-    "fullDescription": "Rich in Vitamin C and traditionally used for immunity boost, our amla is sun-dried and preserved in honey to enhance its natural sweetness and nutritional benefits. Perfect for daily health and energy.",
-    "image": "/images/products/amla.jpg",
-    "price": "₹95 - ₹484",
-    "priceRange": "100g - 1kg",
-    "features": [
-      "Vitamin C",
-      "Immunity Booster",
-      "Natural Energy",
-      "Traditional Goodness"
-    ],
-    "variants": [
-      {
-        "name": "Dry Amla (100g)",
-        "price": "₹95"
-      },
-      {
-        "name": "Honey Amla (250g)",
-        "price": "₹231"
-      },
-      {
-        "name": "Amla Mix (500g)",
-        "price": "₹462"
-      }
-    ]
-  },
-  {
-    "id": "honey",
-    "name": "Pure Natural Honey",
-    "category": "Treats",
-    "shortDescription": "Nature's sweetness in every drop.",
-    "fullDescription": "Our pure natural honey is harvested from the finest apiaries, untreated and unfiltered to preserve all the natural enzymes and nutrients. Perfect for sweetening and wellness, with no additives or preservatives.",
-    "image": "/images/products/honey.jpg",
-    "price": "₹480 - ₹2,400",
-    "priceRange": "250g - 1000g",
-    "features": [
-      "Enzyme Rich",
-      "Immune Support",
-      "Natural Sweetener",
-      "No Additives"
-    ],
-    "variants": [
-      {
-        "name": "Honey 250g",
-        "price": "₹480"
-      },
-      {
-        "name": "Honey 500g",
-        "price": "₹900"
-      },
-      {
-        "name": "Honey 1kg",
-        "price": "₹1,800"
-      }
-    ]
+    "inStock": true,
+    "featured": true,
+    "rating": 5.0
   }
 ]

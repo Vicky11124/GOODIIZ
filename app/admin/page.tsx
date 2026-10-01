@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Product, Variant } from '../lib/products'
 import WebpUploader from '../components/WebpUploader'
+import { Package } from 'lucide-react'
 
 export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([])
@@ -43,7 +44,7 @@ export default function AdminPage() {
     image: '',
     price: '',
     priceRange: '100g - 1kg',
-    features: ['100% Natural', 'Premium Quality'],
+    features: [],
     variants: [{ name: 'Regular Pack (100g)', price: '' }],
     inStock: true,
     featured: false,
@@ -104,7 +105,7 @@ export default function AdminPage() {
       image: '',
       price: '',
       priceRange: '100g - 1kg',
-      features: ['100% Natural', 'Premium Quality'],
+      features: [],
       variants: [{ name: 'Regular Pack (100g)', price: '' }],
       inStock: true,
       featured: false,
@@ -261,16 +262,6 @@ export default function AdminPage() {
       ...formData,
       variants: formData.variants.filter((_, i) => i !== index),
     })
-  }
-
-  const getEmoji = (category: string) => {
-    switch (category) {
-      case 'Nuts': return '🥜'
-      case 'Dairy': return '🥛'
-      case 'Dry Fruits': return '🍇'
-      case 'Treats': return '🍯'
-      default: return '🎁'
-    }
   }
 
   return (
@@ -434,7 +425,10 @@ export default function AdminPage() {
                       }}
                     />
                   ) : (
-                    <span className="text-3xl sm:text-5xl md:text-6xl">{getEmoji(product.category)}</span>
+                    <div className="flex flex-col items-center justify-center gap-1 text-goodiiz-brown/40">
+                      <Package className="w-8 h-8 text-goodiiz-gold/60" />
+                      <span className="text-[10px] font-semibold">No Image</span>
+                    </div>
                   )}
 
                   {/* Category & Stock Badges */}

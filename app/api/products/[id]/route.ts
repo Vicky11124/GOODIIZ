@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { readProducts, writeProducts } from '@/app/lib/db'
 import { Product } from '@/app/lib/products'
 
@@ -54,6 +55,10 @@ export async function PUT(
     products[index] = updatedProduct
     await writeProducts(products)
 
+    revalidatePath('/')
+    revalidatePath('/products')
+    revalidatePath(`/products/${id}`)
+
     return NextResponse.json(updatedProduct)
   } catch (error) {
     console.error('Error updating product:', error)
@@ -75,6 +80,11 @@ export async function DELETE(
     }
 
     await writeProducts(filtered)
+
+    revalidatePath('/')
+    revalidatePath('/products')
+    revalidatePath(`/products/${id}`)
+
     return NextResponse.json({ message: 'Product deleted successfully', id })
   } catch (error) {
     return NextResponse.json({ error: 'Failed to delete product' }, { status: 500 })
