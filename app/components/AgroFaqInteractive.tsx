@@ -118,7 +118,7 @@ export default function AgroFaqInteractive() {
             <p className="text-[11px] sm:text-xs text-goodiiz-brown/70">Our direct agro specialists respond instantly on WhatsApp.</p>
           </div>
           <a
-            href="https://wa.me/919500084204?text=Hi%20GOODIIZ,%20I%20have%20a%20question%20about%20your%20products."
+            href="https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20have%20a%20question%20about%20your%20products."
             target="_blank"
             rel="noopener noreferrer"
             className="bg-goodiiz-green hover:bg-goodiiz-green-dark text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl font-bold text-xs transition shadow-sm whitespace-nowrap self-stretch sm:self-auto text-center"

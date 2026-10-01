@@ -54,7 +54,7 @@ export default function AgroHomeClient({ initialProducts }: Props) {
           <div className="flex flex-wrap gap-4 justify-center pt-2 items-center">
             <SpecularButton
               onClick={() => {
-                window.open('https://wa.me/919500084204?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order.', '_blank');
+                window.open('https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order.', '_blank');
               }}
               size="lg"
               radius={16}

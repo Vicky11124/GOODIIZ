@@ -80,7 +80,7 @@ export default function RootLayout({
     description: 'Nuts, Dry Fruits, Ghee & Natural Treats',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+91-9500084204',
+      telephone: '+91-9025019480',
       contactType: 'customer service',
       areaServed: 'IN',
       availableLanguage: ['en', 'ta', 'hi'],

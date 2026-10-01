@@ -105,7 +105,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
                 <a 
-                  href="https://wa.me/919500084204" 
+                  href="https://wa.me/919025019480" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-emerald-300 hover:text-white transition flex items-center gap-2 font-semibold"
@@ -113,15 +113,15 @@ export default function Footer() {
                   <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                     <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.06c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.14 8.14 0 0 1-1.25-4.29c0-4.51 3.67-8.17 8.18-8.17 2.18 0 4.24.85 5.78 2.39 1.54 1.54 2.4 3.6 2.4 5.79 0 4.51-3.67 8.13-8.18 8.13zm4.49-6.09c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.2 3.7.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29z" />
                   </svg>
-                  <span>WhatsApp: +91 95000 84204</span>
+                  <span>WhatsApp: +91 90250 19480</span>
                 </a>
               </li>
               <li>
-                <a href="tel:+919500084204" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition flex items-center gap-2">
+                <a href="tel:+919025019480" className="text-goodiiz-cream/80 hover:text-goodiiz-gold transition flex items-center gap-2">
                   <svg className="w-4 h-4 text-goodiiz-gold shrink-0 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  <span>Phone: +91 95000 84204</span>
+                  <span>Phone: +91 90250 19480</span>
                 </a>
               </li>
             </ul>

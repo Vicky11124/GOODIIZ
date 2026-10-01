@@ -235,7 +235,7 @@ export default function AgroNutriAdvisor() {
                 <div className="pt-1 sm:pt-2 flex flex-col sm:flex-row gap-2 sm:gap-3 items-center">
                   <SpecularButton
                     onClick={() => {
-                      window.open(`https://wa.me/919500084204?text=${whatsappMessage}`, '_blank');
+                      window.open(`https://wa.me/919025019480?text=${whatsappMessage}`, '_blank');
                     }}
                     size="sm"
                     radius={12}

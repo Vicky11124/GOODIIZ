@@ -70,8 +70,8 @@ app/
 
 ## Contact Information
 
-- **Phone:** +91 95000 84204
-- **WhatsApp:** +91 95000 84204
+- **Phone:** +91 90250 19480
+- **WhatsApp:** +91 90250 19480
 - **Email:** info@goodiiz.in
 
 ## Build for Production

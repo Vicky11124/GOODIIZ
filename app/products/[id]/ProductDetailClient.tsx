@@ -177,7 +177,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <SpecularButton
                 onClick={() => {
-                  window.open(`https://wa.me/919500084204?text=${whatsappMessage}`, '_blank');
+                  window.open(`https://wa.me/919025019480?text=${whatsappMessage}`, '_blank');
                 }}
                 size="md"
                 radius={16}

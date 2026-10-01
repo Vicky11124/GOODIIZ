@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false)
   const [customMsg, setCustomMsg] = useState('')
 
-  const phoneNumber = '919500084204'
+  const phoneNumber = '919025019480'
 
   const quickMessages = [
     'Hi GOODIIZ! I would like to place an order.',

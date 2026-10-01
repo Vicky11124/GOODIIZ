@@ -261,7 +261,7 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
               const displayPrice = activeVariant ? activeVariant.price : product.price
               const displayPack = activeVariant ? activeVariant.name : (product.priceRange || '100g - 1kg')
 
-              const whatsappUrl = `https://wa.me/919500084204?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20order%20${encodeURIComponent(
+              const whatsappUrl = `https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20order%20${encodeURIComponent(
                 product.name
               )}%20(${encodeURIComponent(displayPack)}%20at%20${encodeURIComponent(displayPrice)}).%20Please%20confirm%20availability.`
 
@@ -487,7 +487,7 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
                 </Link>
                 <SpecularButton
                   onClick={() => {
-                    window.open(`https://wa.me/919500084204?text=Hi%20GOODIIZ,%20I%20am%20interested%20in%20ordering%20${encodeURIComponent(
+                    window.open(`https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20am%20interested%20in%20ordering%20${encodeURIComponent(
                       quickViewProduct.name
                     )}`, '_blank');
                   }}

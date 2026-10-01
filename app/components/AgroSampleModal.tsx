@@ -167,7 +167,7 @@ export default function AgroSampleModal({ isOpen, onClose }: Props) {
         {/* Submit to WhatsApp */}
         <div className="pt-2">
           <a
-            href={`https://wa.me/919500084204?text=${sampleMessage}`}
+            href={`https://wa.me/919025019480?text=${sampleMessage}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full bg-goodiiz-green hover:bg-goodiiz-green-dark text-white py-3.5 px-4 rounded-xl font-bold text-xs text-center shadow-md transition flex items-center justify-center gap-2"

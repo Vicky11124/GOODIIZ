@@ -51,7 +51,7 @@ export default function Header() {
           {/* Right Action Cluster: Order Button, Admin Button & Mobile/Sidebar Menu Toggle */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 relative z-30 pointer-events-auto shrink-0">
             <NavbarButton
-              href="https://wa.me/919500084204?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order."
+              href="https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order."
               target="_blank"
               rel="noopener noreferrer"
               variant="agro"
@@ -105,7 +105,7 @@ export default function Header() {
             <SpecularButton
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                window.open('https://wa.me/919500084204?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order.', '_blank');
+                window.open('https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order.', '_blank');
               }}
               size="md"
               radius={14}

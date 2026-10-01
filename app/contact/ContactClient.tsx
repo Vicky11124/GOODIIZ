@@ -27,7 +27,7 @@ export default function ContactClient() {
     const whatsappText = encodeURIComponent(
       `Hi GOODIIZ,\n\nNew Website Inquiry:\n• Type: ${inquiryType.toUpperCase()}\n• Name: ${formData.name}\n• Phone: ${formData.phone}\n• Email: ${formData.email}\n• City: ${formData.city}\n• Message: ${formData.message}`
     )
-    window.open(`https://wa.me/919500084204?text=${whatsappText}`, '_blank')
+    window.open(`https://wa.me/919025019480?text=${whatsappText}`, '_blank')
     setFormData({ name: '', email: '', phone: '', city: '', message: '' })
     setTimeout(() => setSubmitted(false), 5000)
   }
@@ -95,7 +95,7 @@ export default function ContactClient() {
               
               {/* WhatsApp Card */}
               <a
-                href="https://wa.me/919500084204"
+                href="https://wa.me/919025019480"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block group active:scale-95 transition-transform h-full"
@@ -121,7 +121,7 @@ export default function ContactClient() {
                       WhatsApp Desk
                     </h4>
                     <p className="text-[10px] text-goodiiz-brown/70 mt-0.5 line-clamp-1">
-                      +91 95000 84204
+                      +91 90250 19480
                     </p>
                   </div>
                   <div className="pt-2 mt-2 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold text-goodiiz-green">
@@ -133,7 +133,7 @@ export default function ContactClient() {
 
               {/* Phone Line Card */}
               <a
-                href="tel:+919500084204"
+                href="tel:+919025019480"
                 className="block group active:scale-95 transition-transform h-full"
               >
                 <SpecularCard
@@ -157,7 +157,7 @@ export default function ContactClient() {
                       Phone Support
                     </h4>
                     <p className="text-[10px] text-goodiiz-brown/70 mt-0.5 line-clamp-1">
-                      +91 95000 84204
+                      +91 90250 19480
                     </p>
                   </div>
                   <div className="pt-2 mt-2 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold text-goodiiz-green">
@@ -248,7 +248,7 @@ export default function ContactClient() {
 
             <div className="space-y-4">
               <a
-                href="https://wa.me/919500084204"
+                href="https://wa.me/919025019480"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block group"
@@ -269,14 +269,14 @@ export default function ContactClient() {
                       <h4 className="font-serif font-bold text-goodiiz-green">Instant WhatsApp</h4>
                       <span className="text-[10px] bg-emerald-500 text-white px-2 py-0.2 rounded-full font-bold shadow-xs">Live</span>
                     </div>
-                    <p className="text-sm font-semibold text-goodiiz-gold-dark mt-0.5">+91 95000 84204</p>
+                    <p className="text-sm font-semibold text-goodiiz-gold-dark mt-0.5">+91 90250 19480</p>
                     <p className="text-xs text-goodiiz-brown/60 mt-1">Average response within 10 minutes</p>
                   </div>
                 </SpecularCard>
               </a>
 
               <a
-                href="tel:+919500084204"
+                href="tel:+919025019480"
                 className="block group"
               >
                 <SpecularCard
@@ -292,7 +292,7 @@ export default function ContactClient() {
                 >
                   <div>
                     <h4 className="font-serif font-bold text-goodiiz-green">Direct Phone Line</h4>
-                    <p className="text-sm font-semibold text-goodiiz-gold-dark mt-0.5">+91 95000 84204</p>
+                    <p className="text-sm font-semibold text-goodiiz-gold-dark mt-0.5">+91 90250 19480</p>
                     <p className="text-xs text-goodiiz-brown/60 mt-1">Mon - Sat: 9:00 AM to 7:30 PM IST</p>
                   </div>
                 </SpecularCard>
