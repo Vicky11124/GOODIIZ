@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Product } from '@/app/lib/products'
 import SpecularButton from '@/components/ui/SpecularButton'
 import { Package } from 'lucide-react'
@@ -50,11 +51,12 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
           <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-goodiiz-gold/20 space-y-4">
             <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden bg-goodiiz-cream-dark flex items-center justify-center">
               {product.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover hover:scale-105 transition duration-500"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover hover:scale-105 transition duration-500"
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center gap-2 text-goodiiz-brown/50">
@@ -261,13 +263,14 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
                 <Link key={rel.id} href={`/products/${rel.id}`}>
                   <div className="bg-white rounded-2xl p-3 sm:p-5 shadow-card hover:shadow-card-hover border border-goodiiz-gold/20 transition flex flex-col justify-between h-full group">
                     <div>
-                      <div className="h-32 sm:h-44 rounded-xl overflow-hidden bg-white mb-2 sm:mb-3 flex items-center justify-center text-4xl sm:text-6xl border border-gray-100">
+                      <div className="relative h-32 sm:h-44 rounded-xl overflow-hidden bg-white mb-2 sm:mb-3 flex items-center justify-center border border-gray-100">
                         {rel.image ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
+                          <Image
                             src={rel.image}
                             alt={rel.name}
-                            className="w-full h-full object-contain p-1 group-hover:scale-105 transition"
+                            fill
+                            sizes="(max-width: 640px) 50vw, 33vw"
+                            className="object-contain p-1 group-hover:scale-105 transition"
                           />
                         ) : (
                           <Package className="w-8 h-8 text-goodiiz-gold/60" />

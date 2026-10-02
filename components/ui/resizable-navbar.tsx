@@ -8,6 +8,7 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import React, { useRef, useState } from "react";
 
 interface NavbarProps {
@@ -235,9 +236,11 @@ export const NavbarLogo = () => {
       className="relative z-30 flex items-center gap-2.5 py-1 text-sm font-normal group pointer-events-auto cursor-pointer shrink-0"
     >
       <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl overflow-hidden bg-white p-0.5 shadow-sm border border-goodiiz-gold/30 flex items-center justify-center group-hover:scale-105 transition">
-        <img
+        <Image
           src="/images/logo.png"
           alt="GOODIIZ Logo"
+          width={40}
+          height={40}
           className="h-full w-full object-contain"
         />
       </div>

@@ -61,3 +61,7 @@ next-env.d.ts.bak
 # Vercel & Hosting Artifacts
 .vercel
 .kilo/
+
+# Test reports & benchmark artifacts
+*-report.json
+

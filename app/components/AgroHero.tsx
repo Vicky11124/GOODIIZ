@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import SpecularButton from '@/components/ui/SpecularButton'
 
 interface AgroHeroProps {
@@ -7,6 +8,18 @@ interface AgroHeroProps {
 }
 
 export default function AgroHero({ onOpenSampleModal }: AgroHeroProps) {
+  const [loadVideo, setLoadVideo] = useState(false)
+
+  useEffect(() => {
+    // Defer 3.2MB video stream request until 1.5s after initial page render and paint
+    const timer = setTimeout(() => {
+      setLoadVideo(true)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const shouldStreamVideo = typeof window !== 'undefined' && loadVideo
+
   return (
     <section className="relative overflow-hidden w-full max-w-full bg-black text-white pt-20 pb-28 md:pt-32 md:pb-40 min-h-[640px] flex items-center justify-center">
       {/* Background Hero Video */}
@@ -16,10 +29,11 @@ export default function AgroHero({ onOpenSampleModal }: AgroHeroProps) {
           loop
           muted
           playsInline
+          preload="none"
           poster="/images/hero/agro_hero.webp"
           className="absolute inset-0 w-full h-full object-cover opacity-100 brightness-115 contrast-105 transform scale-105 transition-transform duration-1000"
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          {shouldStreamVideo && <source src="/videos/hero-video.mp4" type="video/mp4" />}
         </video>
         {/* Balanced neutral overlay for comfortable brightness and crisp text */}
         <div className="absolute inset-0 bg-black/10"></div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Product } from '../lib/products'
 import SpecularButton from '@/components/ui/SpecularButton'
 import MagicProductCard from '@/components/ui/MagicProductCard'
@@ -13,6 +14,7 @@ interface Props {
 
 export default function InteractiveProductGrid({ initialProducts }: Props) {
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [visibleCount, setVisibleCount] = useState(8)
   const [selectedVariants, setSelectedVariants] = useState<Record<string, number>>({})
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null)
 
@@ -26,9 +28,16 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
     'Dairy',
   ]
 
+  const handleSelectCategory = (cat: string) => {
+    setSelectedCategory(cat)
+    setVisibleCount(8)
+  }
+
   const filtered = selectedCategory === 'All'
     ? initialProducts
     : initialProducts.filter((p) => p.category === selectedCategory)
+
+  const displayedProducts = filtered.slice(0, visibleCount)
 
   const handleVariantChange = (productId: string, variantIndex: number) => {
     setSelectedVariants((prev) => ({
@@ -74,7 +83,7 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
             return (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => handleSelectCategory(cat)}
                 className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
                     ? 'bg-goodiiz-green text-white shadow-sm scale-100'
@@ -94,7 +103,7 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
 
         {/* Products Grid - 2x2 on Mobile, 3-column on Desktop with Full Rich Goodiiz Card Content */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 md:gap-7">
-          {filtered.map((product) => {
+          {displayedProducts.map((product) => {
             const currentVariantIdx = selectedVariants[product.id] || 0
             const activeVariant = product.variants && product.variants.length > 0
               ? product.variants[currentVariantIdx]
@@ -121,11 +130,12 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
                   {/* Product Image Container with Badges */}
                   <div className="relative h-36 sm:h-52 md:h-64 w-full bg-goodiiz-cream-dark overflow-hidden">
                     {product.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover group-hover:scale-105 transition duration-500"
                       />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 text-goodiiz-brown/50 bg-goodiiz-cream-dark">
@@ -136,7 +146,7 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
 
                     {/* Top Floating Badges */}
                     <div className="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col gap-1 sm:gap-1.5 z-10">
-                      <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider bg-goodiiz-green/90 backdrop-blur-md text-white px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full shadow-sm">
+                      <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider bg-goodiiz-green/90 text-white px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full shadow-sm">
                         {product.category}
                       </span>
                       {product.featured && (
@@ -255,6 +265,22 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
           })}
         </div>
 
+        {/* Load More Button - Progressive DOM mounting */}
+        {filtered.length > visibleCount && (
+          <div className="text-center pt-8 sm:pt-12 pb-2">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 8)}
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl bg-goodiiz-green text-white font-bold text-xs sm:text-sm shadow-md hover:bg-goodiiz-green-dark hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span>Load More Harvest Products</span>
+              <span className="text-goodiiz-gold-light text-xs font-semibold">
+                ({displayedProducts.length} of {filtered.length})
+              </span>
+              <span>↓</span>
+            </button>
+          </div>
+        )}
+
         {/* Quick View Modal */}
         {quickViewProduct && (
           <div 
@@ -283,13 +309,14 @@ export default function InteractiveProductGrid({ initialProducts }: Props) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-                <div className="h-56 rounded-2xl overflow-hidden bg-goodiiz-cream">
+                <div className="relative h-56 rounded-2xl overflow-hidden bg-goodiiz-cream flex items-center justify-center">
                   {quickViewProduct.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={quickViewProduct.image}
                       alt={quickViewProduct.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover"
                     />
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-goodiiz-brown/50">

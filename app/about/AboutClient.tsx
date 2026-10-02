@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import SpecularCard from '@/components/ui/SpecularCard'
 import SpecularButton from '@/components/ui/SpecularButton'
@@ -296,10 +297,12 @@ export default function AboutClient() {
             <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
               
               <div className="group relative rounded-2xl overflow-hidden shadow-card border border-goodiiz-gold/30 bg-goodiiz-cream-dark h-40 sm:h-48 flex flex-col justify-end p-3.5 transition-transform duration-500 hover:-translate-y-1">
-                <img
+                <Image
                   src="/images/products/cashews.webp"
                   alt="Jumbo Cashews Grade W240"
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                  fill
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-110 transition duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                 <div className="relative z-10">
@@ -310,10 +313,12 @@ export default function AboutClient() {
               </div>
 
               <div className="group relative rounded-2xl overflow-hidden shadow-card border border-goodiiz-gold/30 bg-goodiiz-cream-dark h-40 sm:h-48 flex flex-col justify-end p-3.5 transition-transform duration-500 hover:-translate-y-1">
-                <img
+                <Image
                   src="/images/products/ghee.webp"
                   alt="Vedic A2 Bilona Ghee"
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                  fill
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-110 transition duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                 <div className="relative z-10">
@@ -324,10 +329,12 @@ export default function AboutClient() {
               </div>
 
               <div className="group relative rounded-2xl overflow-hidden shadow-card border border-goodiiz-gold/30 bg-goodiiz-cream-dark h-40 sm:h-48 flex flex-col justify-end p-3.5 transition-transform duration-500 hover:-translate-y-1">
-                <img
+                <Image
                   src="/images/products/honey.webp"
                   alt="Raw Wild Forest Honey"
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                  fill
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-110 transition duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                 <div className="relative z-10">
@@ -338,10 +345,12 @@ export default function AboutClient() {
               </div>
 
               <div className="group relative rounded-2xl overflow-hidden shadow-card border border-goodiiz-gold/30 bg-goodiiz-cream-dark h-40 sm:h-48 flex flex-col justify-end p-3.5 transition-transform duration-500 hover:-translate-y-1">
-                <img
+                <Image
                   src="/images/products/almonds.webp"
                   alt="Kashmiri Mamra Almonds"
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                  fill
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-110 transition duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                 <div className="relative z-10">
@@ -542,12 +551,14 @@ export default function AboutClient() {
                   <div>
                     {/* Image Header with Badge */}
                     <div className="relative h-28 sm:h-36 rounded-xl overflow-hidden bg-goodiiz-cream mb-3">
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                        fill
+                        sizes="(max-width: 640px) 50vw, 16vw"
+                        className="object-cover group-hover:scale-110 transition duration-700"
                       />
-                      <span className="absolute top-1.5 left-1.5 text-[8px] font-bold uppercase tracking-wider bg-goodiiz-green/90 text-white px-2 py-0.5 rounded-full backdrop-blur-xs">
+                      <span className="absolute top-1.5 left-1.5 text-[8px] font-bold uppercase tracking-wider bg-goodiiz-green/90 text-white px-2 py-0.5 rounded-full backdrop-blur-xs z-10">
                         {item.tag}
                       </span>
                     </div>

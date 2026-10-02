@@ -90,3 +90,35 @@
   mix-blend-mode: multiply;
   will-change: transform, opacity;
 }
+
+/* Mobile & Reduced Motion Optimizations */
+@media (max-width: 768px) {
+  .magic-product-card {
+    will-change: auto;
+    transform: none !important;
+    transform-style: flat;
+  }
+  .magic-product-card--border-glow::after {
+    display: none;
+  }
+  .magic-gold-particle {
+    display: none;
+  }
+  .magic-global-spotlight {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magic-product-card {
+    transition: none !important;
+    transform: none !important;
+  }
+  .magic-product-card--border-glow::after {
+    display: none;
+  }
+  .magic-gold-particle {
+    display: none;
+  }
+}
+

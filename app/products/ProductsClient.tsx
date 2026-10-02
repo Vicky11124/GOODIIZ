@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { motion } from 'motion/react'
 import { Product, defaultProducts } from '../lib/products'
@@ -40,6 +41,7 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
   const [selectedVariants, setSelectedVariants] = useState<Record<string, number>>({})
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null)
   const [loading, setLoading] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(8)
 
   // Sync category when URL search parameter changes
   useEffect(() => {
@@ -73,6 +75,7 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
 
   const handleSelectCategory = (cat: string) => {
     setSelectedCategory(cat)
+    setVisibleCount(8)
     const params = new URLSearchParams(searchParams.toString())
     if (cat === 'All') {
       params.delete('cat')
@@ -83,6 +86,11 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
     }
     const query = params.toString() ? `?${params.toString()}` : ''
     router.replace(`${pathname}${query}`, { scroll: false })
+  }
+
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val)
+    setVisibleCount(8)
   }
 
   const handleVariantChange = (productId: string, variantIndex: number) => {
@@ -108,6 +116,9 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
   } else if (sortBy === 'name') {
     filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name))
   }
+
+  // True DOM level pagination: mount only visibleCount items
+  const displayedProducts = filtered.slice(0, visibleCount)
 
   return (
     <div className="pt-32 sm:pt-36 md:pt-40 pb-12 md:pb-20 bg-goodiiz-cream min-h-screen">
@@ -167,7 +178,7 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
                 type="text"
                 placeholder="Search nuts, honey, ghee, or benefits..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 className="w-full text-xs sm:text-sm pl-10 pr-8 py-2.5 rounded-xl border border-goodiiz-gold/30 bg-goodiiz-cream/30 focus:outline-none focus:border-goodiiz-green focus:bg-white transition"
               />
               <svg className="w-4 h-4 text-goodiiz-brown/50 absolute left-3.5 top-3 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -176,7 +187,7 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
               </svg>
               {searchQuery && (
                 <button
-                  onClick={() => setSearchQuery('')}
+                  onClick={() => handleSearchChange('')}
                   className="absolute right-3 top-2.5 text-xs text-goodiiz-brown/50 hover:text-goodiiz-brown font-bold"
                 >
                   ✕
@@ -244,174 +255,193 @@ export default function ProductsClient({ initialProducts = defaultProducts }: Pr
             <h3 className="text-xl font-bold font-serif text-goodiiz-green mb-2">No matching agro products found</h3>
             <p className="text-xs text-goodiiz-brown/70 mb-4">Try adjusting your search terms or category filter.</p>
             <button
-              onClick={() => { handleSelectCategory('All'); setSearchQuery(''); }}
+              onClick={() => { handleSelectCategory('All'); handleSearchChange(''); }}
               className="bg-goodiiz-green text-white text-xs font-bold px-6 py-2.5 rounded-xl hover:bg-goodiiz-green-dark transition"
             >
               Reset Filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 md:gap-7">
-            {filtered.map((product) => {
-              const currentVariantIdx = selectedVariants[product.id] || 0
-              const activeVariant = product.variants && product.variants.length > 0
-                ? product.variants[currentVariantIdx]
-                : null
+          <>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 md:gap-7">
+              {displayedProducts.map((product) => {
+                const currentVariantIdx = selectedVariants[product.id] || 0
+                const activeVariant = product.variants && product.variants.length > 0
+                  ? product.variants[currentVariantIdx]
+                  : null
 
-              const displayPrice = activeVariant ? activeVariant.price : product.price
-              const displayPack = activeVariant ? activeVariant.name : (product.priceRange || '100g - 1kg')
+                const displayPrice = activeVariant ? activeVariant.price : product.price
+                const displayPack = activeVariant ? activeVariant.name : (product.priceRange || '100g - 1kg')
 
-              const whatsappUrl = `https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20order%20${encodeURIComponent(
-                product.name
-              )}%20(${encodeURIComponent(displayPack)}%20at%20${encodeURIComponent(displayPrice)}).%20Please%20confirm%20availability.`
+                const whatsappUrl = `https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20order%20${encodeURIComponent(
+                  product.name
+                )}%20(${encodeURIComponent(displayPack)}%20at%20${encodeURIComponent(displayPrice)}).%20Please%20confirm%20availability.`
 
-              return (
-                <MagicProductCard
-                  key={product.id}
-                  className="border border-goodiiz-gold/25 shadow-card hover:shadow-card-hover flex flex-col justify-between group h-full"
-                  glowColor="230, 161, 59"
-                  enableStars={true}
-                  enableBorderGlow={true}
-                  enableTilt={true}
-                  clickEffect={true}
-                >
-                  <div>
-                    {/* Product Image Container with Badges */}
-                    <div className="relative h-36 sm:h-52 md:h-64 w-full bg-goodiiz-cream-dark overflow-hidden flex items-center justify-center">
-                      {product.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                        />
-                      ) : (
-                        <div className="flex flex-col items-center justify-center gap-1.5 text-goodiiz-brown/50">
-                          <Package className="w-12 h-12 text-goodiiz-gold/60" />
-                          <span className="text-[10px] font-semibold uppercase tracking-wider">No Image</span>
-                        </div>
-                      )}
-
-                      {/* Top Floating Badges */}
-                      <div className="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col gap-1 sm:gap-1.5 z-10">
-                        <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider bg-goodiiz-green/90 backdrop-blur-md text-white px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full shadow-sm">
-                          {product.category}
-                        </span>
-                        {product.featured && (
-                          <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider bg-goodiiz-gold text-goodiiz-green-dark px-1.5 sm:px-2.5 py-0.5 rounded-full shadow-sm">
-                            ★ Bestseller
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Quick Preview Button */}
-                      <button
-                        onClick={() => setQuickViewProduct(product)}
-                        className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 text-[9px] sm:text-xs bg-white/90 backdrop-blur-md hover:bg-goodiiz-green hover:text-white text-goodiiz-brown font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl shadow-md transition transform group-hover:scale-105 z-10"
-                      >
-                        Quick View
-                      </button>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-3 sm:p-5 md:p-6 space-y-2 sm:space-y-4">
-                      <div>
-                        <h3 className="text-xs sm:text-lg md:text-xl font-serif font-bold text-goodiiz-green group-hover:text-goodiiz-gold transition leading-tight sm:leading-snug line-clamp-1 sm:line-clamp-none">
-                          <Link href={`/products/${product.id}`}>
-                            {product.name}
-                          </Link>
-                        </h3>
-                        <p className="text-[10px] sm:text-xs text-goodiiz-brown/70 line-clamp-2 mt-0.5 sm:mt-1.5 leading-tight sm:leading-relaxed">
-                          {product.shortDescription || product.fullDescription}
-                        </p>
-                      </div>
-
-                      {/* Features Badges (Shown inside Quick View / Details on mobile, visible on desktop) */}
-                      {product.features && product.features.length > 0 && (
-                        <div className="hidden sm:flex flex-wrap gap-1 sm:gap-1.5">
-                          {product.features.slice(0, 3).map((feat, i) => (
-                            <span
-                              key={i}
-                              className="text-[9px] sm:text-[11px] font-medium bg-goodiiz-cream text-goodiiz-green px-1.5 sm:px-2 py-0.5 rounded-md border border-goodiiz-gold/15 truncate max-w-full"
-                            >
-                              ✓ {feat}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Interactive Pack Size Selector */}
-                      {product.variants && product.variants.length > 0 && (
-                        <div className="pt-1.5 sm:pt-2 border-t border-goodiiz-cream">
-                          <div className="text-[9px] sm:text-[11px] font-bold text-goodiiz-brown/70 uppercase tracking-wider mb-1 sm:mb-2">
-                            Select Pack Size:
+                return (
+                  <MagicProductCard
+                    key={product.id}
+                    className="border border-goodiiz-gold/25 shadow-card hover:shadow-card-hover flex flex-col justify-between group h-full"
+                    glowColor="230, 161, 59"
+                    enableStars={true}
+                    enableBorderGlow={true}
+                    enableTilt={true}
+                    clickEffect={true}
+                  >
+                    <div>
+                      {/* Product Image Container with Badges */}
+                      <div className="relative h-36 sm:h-52 md:h-64 w-full bg-goodiiz-cream-dark overflow-hidden flex items-center justify-center">
+                        {product.image ? (
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            className="object-cover group-hover:scale-105 transition duration-500"
+                          />
+                        ) : (
+                          <div className="flex flex-col items-center justify-center gap-1.5 text-goodiiz-brown/50">
+                            <Package className="w-12 h-12 text-goodiiz-gold/60" />
+                            <span className="text-[10px] font-semibold uppercase tracking-wider">No Image</span>
                           </div>
-                          <div className="grid grid-cols-2 gap-1 sm:gap-1.5">
-                            {product.variants.map((variant, vIdx) => (
-                              <button
-                                key={vIdx}
-                                onClick={() => handleVariantChange(product.id, vIdx)}
-                                className={`py-1 sm:py-1.5 px-1 sm:px-2 rounded-md sm:rounded-lg text-[9px] sm:text-xs font-semibold transition border truncate text-center ${
-                                  currentVariantIdx === vIdx
-                                    ? 'bg-goodiiz-green text-white border-goodiiz-green shadow-xs'
-                                    : 'bg-goodiiz-cream/60 hover:bg-goodiiz-cream text-goodiiz-brown border-goodiiz-gold/20'
-                                }`}
+                        )}
+
+                        {/* Top Floating Badges */}
+                        <div className="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col gap-1 sm:gap-1.5 z-10">
+                          <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider bg-goodiiz-green/90 text-white px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full shadow-sm">
+                            {product.category}
+                          </span>
+                          {product.featured && (
+                            <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider bg-goodiiz-gold text-goodiiz-green-dark px-1.5 sm:px-2.5 py-0.5 rounded-full shadow-sm">
+                              ★ Bestseller
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Quick Preview Button */}
+                        <button
+                          onClick={() => setQuickViewProduct(product)}
+                          className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 text-[9px] sm:text-xs bg-white/95 hover:bg-goodiiz-green hover:text-white text-goodiiz-brown font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl shadow-md transition transform group-hover:scale-105 z-10"
+                        >
+                          Quick View
+                        </button>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-3 sm:p-5 md:p-6 space-y-2 sm:space-y-4">
+                        <div>
+                          <h3 className="text-xs sm:text-lg md:text-xl font-serif font-bold text-goodiiz-green group-hover:text-goodiiz-gold transition leading-tight sm:leading-snug line-clamp-1 sm:line-clamp-none">
+                            <Link href={`/products/${product.id}`}>
+                              {product.name}
+                            </Link>
+                          </h3>
+                          <p className="text-[10px] sm:text-xs text-goodiiz-brown/70 line-clamp-2 mt-0.5 sm:mt-1.5 leading-tight sm:leading-relaxed">
+                            {product.shortDescription || product.fullDescription}
+                          </p>
+                        </div>
+
+                        {/* Features Badges (Shown inside Quick View / Details on mobile, visible on desktop) */}
+                        {product.features && product.features.length > 0 && (
+                          <div className="hidden sm:flex flex-wrap gap-1 sm:gap-1.5">
+                            {product.features.slice(0, 3).map((feat, i) => (
+                              <span
+                                key={i}
+                                className="text-[9px] sm:text-[11px] font-medium bg-goodiiz-cream text-goodiiz-green px-1.5 sm:px-2 py-0.5 rounded-md border border-goodiiz-gold/15 truncate max-w-full"
                               >
-                                {variant.name.replace(/^(Cashew|Almond|Pista|Ghee|Honey|Raisin|Amla)\s*/i, '')}
-                              </button>
+                                ✓ {feat}
+                              </span>
                             ))}
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                        )}
 
-                  {/* Card Footer: Live Price & Instant WhatsApp Order Button */}
-                  <div className="p-3 sm:p-5 md:p-6 pt-0 space-y-2 sm:space-y-3">
-                    <div className="flex justify-between items-end pt-2 sm:pt-3 border-t border-goodiiz-cream">
-                      <div>
-                        <div className="text-[8px] sm:text-[10px] text-goodiiz-brown/60 uppercase font-bold tracking-wider">Price</div>
-                        <div className="text-base sm:text-xl md:text-2xl font-bold font-serif text-goodiiz-gold leading-tight">
-                          {displayPrice}
-                        </div>
+                        {/* Interactive Pack Size Selector */}
+                        {product.variants && product.variants.length > 0 && (
+                          <div className="pt-1.5 sm:pt-2 border-t border-goodiiz-cream">
+                            <div className="text-[9px] sm:text-[11px] font-bold text-goodiiz-brown/70 uppercase tracking-wider mb-1 sm:mb-2">
+                              Select Pack Size:
+                            </div>
+                            <div className="grid grid-cols-2 gap-1 sm:gap-1.5">
+                              {product.variants.map((variant, vIdx) => (
+                                <button
+                                  key={vIdx}
+                                  onClick={() => handleVariantChange(product.id, vIdx)}
+                                  className={`py-1 sm:py-1.5 px-1 sm:px-2 rounded-md sm:rounded-lg text-[9px] sm:text-xs font-semibold transition border truncate text-center ${
+                                    currentVariantIdx === vIdx
+                                      ? 'bg-goodiiz-green text-white border-goodiiz-green shadow-xs'
+                                      : 'bg-goodiiz-cream/60 hover:bg-goodiiz-cream text-goodiiz-brown border-goodiiz-gold/20'
+                                  }`}
+                                >
+                                  {variant.name.replace(/^(Cashew|Almond|Pista|Ghee|Honey|Raisin|Amla)\s*/i, '')}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      <Link
-                        href={`/products/${product.id}`}
-                        className="text-[10px] sm:text-xs font-bold text-goodiiz-green hover:text-goodiiz-gold transition whitespace-nowrap bg-goodiiz-cream px-2 py-1 rounded-md sm:bg-transparent sm:p-0"
-                      >
-                        Details →
-                      </Link>
                     </div>
 
-                    <SpecularButton
-                      onClick={() => {
-                        window.open(whatsappUrl, '_blank');
-                      }}
-                      size="sm"
-                      radius={12}
-                      tint="#103623"
-                      tintOpacity={1}
-                      textColor="#ffffff"
-                      lineColor="#fff59d"
-                      baseColor="#e6a13b"
-                      intensity={2.4}
-                      shineSize={30}
-                      shineFade={45}
-                      thickness={1.2}
-                      speed={0.7}
-                      autoAnimate={true}
-                      followMouse={true}
-                      proximity={350}
-                      className="w-full font-bold text-[10px] sm:text-xs shadow-md hover:shadow-xl transition"
-                    >
-                      <span className="truncate">Order on WhatsApp</span>
-                      <span>→</span>
-                    </SpecularButton>
-                  </div>
-                </MagicProductCard>
-              )
-            })}
-          </div>
+                    {/* Card Footer: Live Price & Instant WhatsApp Order Button */}
+                    <div className="p-3 sm:p-5 md:p-6 pt-0 space-y-2 sm:space-y-3">
+                      <div className="flex justify-between items-end pt-2 sm:pt-3 border-t border-goodiiz-cream">
+                        <div>
+                          <div className="text-[8px] sm:text-[10px] text-goodiiz-brown/60 uppercase font-bold tracking-wider">Price</div>
+                          <div className="text-base sm:text-xl md:text-2xl font-bold font-serif text-goodiiz-gold leading-tight">
+                            {displayPrice}
+                          </div>
+                        </div>
+                        <Link
+                          href={`/products/${product.id}`}
+                          className="text-[10px] sm:text-xs font-bold text-goodiiz-green hover:text-goodiiz-gold transition whitespace-nowrap bg-goodiiz-cream px-2 py-1 rounded-md sm:bg-transparent sm:p-0"
+                        >
+                          Details →
+                        </Link>
+                      </div>
+
+                      <SpecularButton
+                        onClick={() => {
+                          window.open(whatsappUrl, '_blank');
+                        }}
+                        size="sm"
+                        radius={12}
+                        tint="#103623"
+                        tintOpacity={1}
+                        textColor="#ffffff"
+                        lineColor="#fff59d"
+                        baseColor="#e6a13b"
+                        intensity={2.4}
+                        shineSize={30}
+                        shineFade={45}
+                        thickness={1.2}
+                        speed={0.7}
+                        autoAnimate={true}
+                        followMouse={true}
+                        proximity={350}
+                        className="w-full font-bold text-[10px] sm:text-xs shadow-md hover:shadow-xl transition"
+                      >
+                        <span className="truncate">Order on WhatsApp</span>
+                        <span>→</span>
+                      </SpecularButton>
+                    </div>
+                  </MagicProductCard>
+                )
+              })}
+            </div>
+
+            {/* Load More Button - Progressive DOM mounting */}
+            {filtered.length > visibleCount && (
+              <div className="text-center pt-10 sm:pt-14 pb-4">
+                <button
+                  onClick={() => setVisibleCount((prev) => prev + 8)}
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-goodiiz-green text-white font-bold text-sm shadow-md hover:bg-goodiiz-green-dark hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <span>Load More Harvest Products</span>
+                  <span className="text-goodiiz-gold-light text-xs font-semibold">
+                    ({displayedProducts.length} of {filtered.length})
+                  </span>
+                  <span>↓</span>
+                </button>
+              </div>
+            )}
+          </>
         )}
 
         {/* Quick View Modal */}
