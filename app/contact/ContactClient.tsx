@@ -219,14 +219,14 @@ export default function ContactClient() {
                   <div>
                     <div className="flex items-center justify-end mb-2">
                       <span className="text-[9px] bg-goodiiz-gold/20 text-goodiiz-brown px-2 py-0.5 rounded-full font-bold uppercase tracking-wider border border-goodiiz-gold/30">
-                        Hub
+                        Store
                       </span>
                     </div>
                     <h4 className="text-xs font-serif font-bold text-goodiiz-green">
-                      Farm Dispatch Hub
+                      Goodiiz Organic Store
                     </h4>
                     <p className="text-[10px] text-goodiiz-brown/70 mt-0.5 line-clamp-1">
-                      Tiruchirappalli, TN
+                      Porur, Chennai 600116
                     </p>
                   </div>
                   <div className="pt-2 mt-2 border-t border-gray-100 text-[10px] text-goodiiz-brown/60">
@@ -322,14 +322,15 @@ export default function ContactClient() {
               </a>
             </div>
 
-            {/* Farm Headquarters Address */}
+            {/* Store Address */}
             <div className="bg-white rounded-3xl p-6 shadow-card border border-goodiiz-gold/20 space-y-2">
               <div className="flex items-center gap-2 text-xs font-bold text-goodiiz-green uppercase tracking-wider">
-                Processing & Farm Dispatch Centre
+                Store Address
               </div>
               <p className="text-xs text-goodiiz-brown/80 leading-relaxed">
-                GOODIIZ Agro Foods & Natural Products,<br />
-                Regional Farm Hub, Tiruchirappalli, Tamil Nadu, India.
+                Goodiiz Organic Store — Nuts &amp; Treats,<br />
+                No 377, Samayapuram Main Road,<br />
+                Karambakkam, Porur 600116.
               </p>
             </div>
           </div>
