@@ -203,7 +203,7 @@ export default function AboutClient() {
 
             <SpecularButton
               onClick={() => {
-                window.open('https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20know%20more%20about%20your%20origin%20harvests.', '_blank')
+                window.open('https://wa.me/919047474204?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20know%20more%20about%20your%20origin%20harvests.', '_blank')
               }}
               size="md"
               radius={14}
@@ -732,7 +732,7 @@ export default function AboutClient() {
 
               <SpecularButton
                 onClick={() => {
-                  window.open('https://wa.me/919025019480?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order%20for%20fresh%20farm%20produce.', '_blank')
+                  window.open('https://wa.me/919047474204?text=Hi%20GOODIIZ,%20I%20would%20like%20to%20place%20an%20order%20for%20fresh%20farm%20produce.', '_blank')
                 }}
                 size="lg"
                 radius={16}
