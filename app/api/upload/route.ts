@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server'
 import { getSupabaseServerClient } from '@/app/lib/supabase'
+import { isAuthenticatedAdmin } from '@/app/lib/auth'
 
 export async function POST(request: Request) {
   try {
+    // Admin Authorization Guard
+    if (!isAuthenticatedAdmin(request)) {
+      return NextResponse.json({ error: 'Unauthorized: Admin login required' }, { status: 401 })
+    }
+
     const contentType = request.headers.get('content-type') || ''
     const supabase = getSupabaseServerClient()
 

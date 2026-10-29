@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { readProducts, createProduct, writeProducts } from '@/app/lib/db'
 import { Product, defaultProducts } from '@/app/lib/products'
+import { isAuthenticatedAdmin } from '@/app/lib/auth'
 
 export async function GET() {
   try {
@@ -18,6 +19,14 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    // Admin Authorization Guard
+    if (!isAuthenticatedAdmin(request)) {
+      return NextResponse.json(
+        { error: 'Unauthorized: Admin login required' },
+        { status: 401 }
+      )
+    }
+
     let body: any
     try {
       body = await request.json()
@@ -101,8 +110,15 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
-  // Support reset / bulk update
   try {
+    // Admin Authorization Guard
+    if (!isAuthenticatedAdmin(request)) {
+      return NextResponse.json(
+        { error: 'Unauthorized: Admin login required' },
+        { status: 401 }
+      )
+    }
+
     const body = await request.json()
     if (body.action === 'reset') {
       await writeProducts(defaultProducts)

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { readProducts, updateProduct, deleteProduct } from '@/app/lib/db'
+import { isAuthenticatedAdmin } from '@/app/lib/auth'
 
 export async function GET(
   request: Request,
@@ -27,6 +28,11 @@ export async function PUT(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Admin Authorization Guard
+    if (!isAuthenticatedAdmin(request)) {
+      return NextResponse.json({ error: 'Unauthorized: Admin login required' }, { status: 401 })
+    }
+
     const { id } = await context.params
     const body = await request.json()
 
@@ -48,6 +54,11 @@ export async function DELETE(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Admin Authorization Guard
+    if (!isAuthenticatedAdmin(request)) {
+      return NextResponse.json({ error: 'Unauthorized: Admin login required' }, { status: 401 })
+    }
+
     const { id } = await context.params
     await deleteProduct(id)
 

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Product, Variant } from '../lib/products'
 import WebpUploader from '../components/WebpUploader'
-import { Package } from 'lucide-react'
+import { Package, Lock, ShieldCheck, LogOut, Eye, EyeOff, User } from 'lucide-react'
 
 export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([])
@@ -17,6 +17,14 @@ export default function AdminPage() {
   const [productToDelete, setProductToDelete] = useState<Product | null>(null)
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+  const [usernameInput, setUsernameInput] = useState('')
+  const [passwordInput, setPasswordInput] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [loginLoading, setLoginLoading] = useState(false)
+  const [loginError, setLoginError] = useState('')
 
   // Form State
   const [formData, setFormData] = useState<{
@@ -55,13 +63,72 @@ export default function AdminPage() {
   const [newFeatureInput, setNewFeatureInput] = useState('')
 
   useEffect(() => {
-    fetchProducts()
+    checkSession()
   }, [])
+
+  const checkSession = async () => {
+    try {
+      const res = await fetch('/api/admin/session')
+      const data = await res.json()
+      if (data.authenticated) {
+        setIsAuthenticated(true)
+        fetchProducts()
+      } else {
+        setIsAuthenticated(false)
+        setLoading(false)
+      }
+    } catch {
+      setIsAuthenticated(false)
+      setLoading(false)
+    }
+  }
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoginError('')
+    setLoginLoading(true)
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: usernameInput,
+          password: passwordInput,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        throw new Error(data.error || 'Login failed')
+      }
+      setIsAuthenticated(true)
+      showNotification('success', 'Admin login successful!')
+      fetchProducts()
+    } catch (err: any) {
+      setLoginError(err.message || 'Invalid username or password')
+    } finally {
+      setLoginLoading(false)
+    }
+  }
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' })
+      setIsAuthenticated(false)
+      setPasswordInput('')
+      showNotification('success', 'You have been logged out.')
+    } catch {
+      setIsAuthenticated(false)
+    }
+  }
 
   const fetchProducts = async () => {
     try {
       setLoading(true)
       const res = await fetch('/api/products')
+      if (res.status === 401) {
+        setIsAuthenticated(false)
+        return
+      }
       if (!res.ok) throw new Error('Failed to fetch')
       const data = await res.json()
       setProducts(data)
@@ -270,6 +337,112 @@ export default function AdminPage() {
     })
   }
 
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-goodiiz-cream-light flex items-center justify-center p-4">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-10 h-10 border-4 border-goodiiz-gold/30 border-t-goodiiz-green rounded-full animate-spin" />
+          <p className="text-xs sm:text-sm font-semibold text-goodiiz-green">Verifying GOODIIZ Admin Session...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (isAuthenticated === false) {
+    return (
+      <div className="min-h-screen bg-goodiiz-cream-light flex items-center justify-center px-4 py-16">
+        <div className="w-full max-w-md bg-white rounded-2xl p-6 sm:p-8 shadow-card border border-goodiiz-gold/25 space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-goodiiz-green text-goodiiz-gold shadow-sm mb-2">
+              <Lock className="w-7 h-7" />
+            </div>
+            <h1 className="text-2xl font-bold text-goodiiz-green">GOODIIZ Admin Portal</h1>
+            <p className="text-xs sm:text-sm text-goodiiz-brown/70">
+              Sign in with administrative credentials to manage products, pricing, and inventory.
+            </p>
+          </div>
+
+          {loginError && (
+            <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+              <span className="font-bold text-sm">⚠</span>
+              <span>{loginError}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-goodiiz-green uppercase tracking-wider mb-1.5">
+                Admin Username or Email
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  required
+                  value={usernameInput}
+                  onChange={(e) => setUsernameInput(e.target.value)}
+                  placeholder="admin@goodiiz.in"
+                  className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-goodiiz-cream-dark text-xs sm:text-sm focus:outline-none focus:border-goodiiz-green text-goodiiz-brown bg-goodiiz-cream/10"
+                />
+                <User className="w-4 h-4 text-goodiiz-brown/40 absolute left-3.5 top-3" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-goodiiz-green uppercase tracking-wider mb-1.5">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={passwordInput}
+                  onChange={(e) => setPasswordInput(e.target.value)}
+                  placeholder="••••••••••••"
+                  className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-goodiiz-cream-dark text-xs sm:text-sm focus:outline-none focus:border-goodiiz-green text-goodiiz-brown bg-goodiiz-cream/10"
+                />
+                <Lock className="w-4 h-4 text-goodiiz-brown/40 absolute left-3.5 top-3" />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-3 text-goodiiz-brown/50 hover:text-goodiiz-green transition"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loginLoading}
+              className="w-full bg-goodiiz-green hover:bg-goodiiz-green-dark text-white font-bold py-3 rounded-xl transition shadow-card hover:shadow-card-hover text-xs sm:text-sm flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {loginLoading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <span>Verifying Credentials...</span>
+                </>
+              ) : (
+                <>
+                  <ShieldCheck className="w-4 h-4 text-goodiiz-gold" />
+                  <span>Sign In to Admin Portal</span>
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="pt-2 border-t border-goodiiz-cream flex items-center justify-between text-xs text-goodiiz-brown/60">
+            <Link href="/" className="hover:text-goodiiz-green transition font-medium flex items-center gap-1">
+              <span>←</span> Store Home
+            </Link>
+            <span className="flex items-center gap-1 text-[11px] text-emerald-700">
+              <ShieldCheck className="w-3.5 h-3.5" /> Encrypted Session
+            </span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-goodiiz-cream-light pt-24 sm:pt-30 md:pt-36 pb-12 px-3 sm:px-6 md:px-8">
       {/* Notifications Toast */}
@@ -329,6 +502,15 @@ export default function AdminPage() {
                 title="Reset catalog to standard seed products"
               >
                 Reset Catalog
+              </button>
+
+              <button
+                onClick={handleLogout}
+                className="px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-center"
+                title="Sign out of admin portal"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span>Logout</span>
               </button>
             </div>
           </div>
