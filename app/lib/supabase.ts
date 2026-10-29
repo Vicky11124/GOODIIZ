@@ -1,19 +1,22 @@
 import { createClient } from '@supabase/supabase-js'
 import { Product } from './products'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ncatminnzfmgetfzwmtv.supabase.co'
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+const DEFAULT_SUPABASE_URL = 'https://ncatminnzfmgetfzwmtv.supabase.co'
+const DEFAULT_ANON_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jYXRtaW5uemZtZ2V0Znp3bXR2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzNTIxNzYsImV4cCI6MjEwNTkyODE3Nn0.Z4kkZG9G5jhUyFEmpxD8g1WElZoJ9eekztQXNku5pnQ'
+const DEFAULT_SERVICE_ROLE_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jYXRtaW5uemZtZ2V0Znp3bXR2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc5MDM1MjE3NiwiZXhwIjoyMTA1OTI4MTc2fQ.Fxq8OiAZcUgbLETpNpwbRLi8jWIR0fTkgMQuFixsqEU'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || DEFAULT_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || DEFAULT_ANON_KEY
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || DEFAULT_SERVICE_ROLE_KEY
 
 // Public client for browser / anon operations
-export const supabasePublic = createClient(supabaseUrl, supabaseAnonKey || supabaseServiceKey)
+export const supabasePublic = createClient(supabaseUrl, supabaseAnonKey)
 
 // Server client with service role for admin API routes
 export const getSupabaseServerClient = () => {
   const key = supabaseServiceKey || supabaseAnonKey
-  if (!key) {
-    throw new Error('Supabase API key is missing')
-  }
   return createClient(supabaseUrl, key, {
     auth: {
       persistSession: false,
