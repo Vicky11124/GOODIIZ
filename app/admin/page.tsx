@@ -160,7 +160,10 @@ export default function AdminPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         })
-        if (!res.ok) throw new Error('Update failed')
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}))
+          throw new Error(errData.error || 'Update failed')
+        }
         const updated = await res.json()
         setProducts(products.map((p) => (p.id === updated.id ? updated : p)))
         showNotification('success', `Product "${updated.name}" updated successfully!`)
@@ -171,14 +174,17 @@ export default function AdminPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         })
-        if (!res.ok) throw new Error('Creation failed')
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}))
+          throw new Error(errData.error || 'Creation failed')
+        }
         const created = await res.json()
         setProducts([created, ...products])
         showNotification('success', `Product "${created.name}" created successfully!`)
       }
       setIsModalOpen(false)
-    } catch (error) {
-      showNotification('error', 'Failed to save product. Please check inputs.')
+    } catch (error: any) {
+      showNotification('error', error?.message || 'Failed to save product. Please check inputs.')
     } finally {
       setIsSubmitting(false)
     }

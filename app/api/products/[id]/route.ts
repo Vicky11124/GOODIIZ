@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
-import { readProducts, writeProducts } from '@/app/lib/db'
-import { Product } from '@/app/lib/products'
+import { readProducts, updateProduct, deleteProduct } from '@/app/lib/db'
 
 export async function GET(
   request: Request,
@@ -17,7 +16,8 @@ export async function GET(
     }
 
     return NextResponse.json(product)
-  } catch (error) {
+  } catch (error: any) {
+    console.error(`[API /api/products/[id] GET] Error:`, error?.message || error)
     return NextResponse.json({ error: 'Failed to fetch product' }, { status: 500 })
   }
 }
@@ -29,39 +29,16 @@ export async function PUT(
   try {
     const { id } = await context.params
     const body = await request.json()
-    const products = await readProducts()
-    const index = products.findIndex(p => p.id === id)
 
-    if (index === -1) {
-      return NextResponse.json({ error: 'Product not found' }, { status: 404 })
-    }
-
-    const updatedProduct: Product = {
-      ...products[index],
-      name: body.name !== undefined ? body.name.trim() : products[index].name,
-      category: body.category !== undefined ? body.category.trim() : products[index].category,
-      shortDescription: body.shortDescription !== undefined ? body.shortDescription.trim() : products[index].shortDescription,
-      fullDescription: body.fullDescription !== undefined ? body.fullDescription.trim() : products[index].fullDescription,
-      image: body.image !== undefined ? body.image : products[index].image,
-      price: body.price !== undefined ? body.price.trim() : products[index].price,
-      priceRange: body.priceRange !== undefined ? body.priceRange.trim() : products[index].priceRange,
-      features: Array.isArray(body.features) ? body.features.filter((f: string) => f.trim() !== '') : products[index].features,
-      variants: Array.isArray(body.variants) ? body.variants.filter((v: any) => v.name && v.price) : products[index].variants,
-      inStock: body.inStock !== undefined ? body.inStock : products[index].inStock,
-      featured: body.featured !== undefined ? body.featured : products[index].featured,
-      rating: body.rating !== undefined ? parseFloat(body.rating) : products[index].rating
-    }
-
-    products[index] = updatedProduct
-    await writeProducts(products)
+    const updatedProduct = await updateProduct(id, body)
 
     revalidatePath('/')
     revalidatePath('/products')
     revalidatePath(`/products/${id}`)
 
     return NextResponse.json(updatedProduct)
-  } catch (error) {
-    console.error('Error updating product:', error)
+  } catch (error: any) {
+    console.error(`[API /api/products/[id] PUT] Error:`, error?.message || error)
     return NextResponse.json({ error: 'Failed to update product' }, { status: 500 })
   }
 }
@@ -72,21 +49,15 @@ export async function DELETE(
 ) {
   try {
     const { id } = await context.params
-    const products = await readProducts()
-    const filtered = products.filter(p => p.id !== id)
-
-    if (filtered.length === products.length) {
-      return NextResponse.json({ error: 'Product not found' }, { status: 404 })
-    }
-
-    await writeProducts(filtered)
+    await deleteProduct(id)
 
     revalidatePath('/')
     revalidatePath('/products')
     revalidatePath(`/products/${id}`)
 
     return NextResponse.json({ message: 'Product deleted successfully', id })
-  } catch (error) {
+  } catch (error: any) {
+    console.error(`[API /api/products/[id] DELETE] Error:`, error?.message || error)
     return NextResponse.json({ error: 'Failed to delete product' }, { status: 500 })
   }
 }
